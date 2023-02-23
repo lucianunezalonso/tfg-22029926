@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('HomeScreen'),
+        title: Text('AdoptionMovement'),
         centerTitle: true,
       ),
 
@@ -67,11 +67,105 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               SizedBox(height: 16.0),
-              Text(
-                'Tu correo: ${_currentUser.email}',
-                style: Theme.of(context).textTheme.bodyText1,
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.pets_outlined, size: 50),
+                label: RichText(
+                  text: TextSpan(
+                    style: TextStyle(fontSize: 20),
+                    children: [
+                      TextSpan(text: '¿Necesitas que un animal sea adoptado? \n'),
+                      TextSpan(text: 'Te recomendamos a donde llevarlo', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
+                    ],
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary:  Color(0xFFEE892F),
+                  minimumSize: Size(double.infinity, 100),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
               ),
-              SizedBox(height: 16.0),
+
+              SizedBox(height: 10.0),
+
+
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.list_alt_sharp, size:50),
+                label: RichText(
+                  text: TextSpan(
+                    style: TextStyle(fontSize: 20),
+                    children: [
+                      TextSpan(text: 'Haz el test de compatibilidad\n'),
+                      TextSpan(text: 'Con los resultados sabremos qué animales se adaptan a tí', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
+                    ],
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary:  Color(0xFFE0BB76),
+                  minimumSize: Size(double.infinity, 100),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+
+
+              SizedBox(height: 10.0),
+
+
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.favorite_outline, size:50),
+                label: RichText(
+                  text: TextSpan(
+                    style: TextStyle(fontSize: 20),
+                    children: [
+                      TextSpan(text: 'Listado de compatibles\n'),
+                      TextSpan(text: 'Entre ellos podría estar tu nuevo compañero', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
+                    ],
+                  ),
+                ),
+
+                style: ElevatedButton.styleFrom(
+                  primary:  Color(0xFF6E896A),
+                  minimumSize: Size(double.infinity, 100),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 10.0),
+
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.home_outlined, size: 50),
+                label: RichText(
+                  text: TextSpan(
+                    style: TextStyle(fontSize: 20),
+                    children: [
+                      TextSpan(text: 'Listado de centros\n'),
+                      TextSpan(text: 'Información organizada y disponible', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
+                    ],
+                  ),
+                ),
+
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF325434),
+                  minimumSize: Size(double.infinity, 100),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+
+              ),
+
+              SizedBox(height: 10.0),
+
+
               ElevatedButton(
                 onPressed: () async {
                   await FirebaseAuth.instance.signOut();
@@ -83,10 +177,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: const Text('Cerrar sesión'),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
+                style:
+                  ElevatedButton.styleFrom(
+                    primary: Colors.black,
+                    minimumSize: Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
                 ),
-              ),
+
             ],
           ),
         ),
