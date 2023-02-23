@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text('AdoptionMovement'),
+          title: Text('Inicio sesión'),
           centerTitle: true,
         ),
         body: FutureBuilder(
@@ -65,15 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 30.0,top: 12),
-                      child: Text(
-                        'AdoptionMovement',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 40
-                        )
-                      ),
+                    SizedBox(height: 22.0),
+                    Image.asset(
+                      'assets/images/logo.png', // Ruta de la imagen en el directorio de activos
+                      width: 200, // Ancho de la imagen
+                      height: 200, // Alto de la imagen
                     ),
                     Form(
                       key: _formKey,
@@ -86,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               email: value,
                             ),
                             decoration: InputDecoration(
-                              hintText: "Email",
+                              hintText: "Correo electrónico",
                               errorBorder: UnderlineInputBorder(
                                 borderRadius: BorderRadius.circular(6.0),
                                 borderSide: BorderSide(
@@ -104,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               password: value,
                             ),
                             decoration: InputDecoration(
-                              hintText: "Password",
+                              hintText: "Contraseña",
                               errorBorder: UnderlineInputBorder(
                                 borderRadius: BorderRadius.circular(6.0),
                                 borderSide: BorderSide(
@@ -118,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ? CircularProgressIndicator()
                           : Row(
                             mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.center,
                             children: [
                               Expanded(
                                 child: ElevatedButton(

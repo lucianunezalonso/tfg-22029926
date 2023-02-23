@@ -6,6 +6,7 @@ import '../screens/login_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/signup_screen.dart';
 
+
 import '../helper/firebase_auth.dart';
 import '../helper/validator.dart';
 
@@ -19,63 +20,64 @@ class _Inicio1ScreenState extends State<Inicio1Screen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text('Adoption Movement'),
-          centerTitle: true,
+
+
+      child: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/perro_inicio.jpeg'),
+            fit: BoxFit.cover,
+          ),
         ),
 
-        body: FutureBuilder(
-          builder: (context, snapshot) {
-              return Padding(
-                padding: const EdgeInsets.only(
-                    left: 24.0, right: 24.0, top: 48),
 
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Image.asset('assets/codeigniter.png'),
 
-                    ElevatedButton(
-                      child: Text("Registrarse"),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.black),
-                      ),
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            title: Text('Adoption Movement'),
+            centerTitle: true,
+          ),
 
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                SignUpScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                    ElevatedButton(
-                      child: Text("Iniciar sesión"),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.black),
-                      ),
-
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                LoginScreen(),
-                          ),
-                        );
-                      },
-                    ),
-
-                  ],
-                ),
-              );
-
-          },
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              child: Text("Registrarse"),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.black),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SignUpScreen(),
+                  ),
+                );
+              },
+            ),
+            SizedBox(width: 16),
+            ElevatedButton(
+              child: Text("Iniciar sesión"),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.black),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
+
       ),
-
+      )
     );
   }
 }
+
+

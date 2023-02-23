@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../screens/home_screen.dart';
 import '../helper/firebase_auth.dart';
 import '../helper/validator.dart';
+import '../screens/login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -39,11 +40,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
           centerTitle: true,
         ),
         body: Padding(
+          // margenes laterales
           padding: const EdgeInsets.all(24.0),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 22.0),
+                Image.asset(
+                  'assets/images/logo.png', // Ruta de la imagen en el directorio de activos
+                  width: 200, // Ancho de la imagen
+                  height: 200, // Alto de la imagen
+                ),
+
                 Form(
                   key: _registerFormKey,
                   child: Column(
@@ -99,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      SizedBox(height: 30.0),
                       _isProcessing
                       ? CircularProgressIndicator()
                       : Row(
@@ -149,9 +158,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 backgroundColor: MaterialStateProperty.all(Colors.black),
                               ),
                             ),
+
+
                           ),
                         ],
-                      )
+                      ),
+                      SizedBox(height: 25.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("¿Ya tienes una cuenta? ",
+                          style: TextStyle(fontSize: 18)),
+                          TextButton(
+                            child: Text("Iniciar sesión"),
+                            style: TextButton.styleFrom(
+                              textStyle: TextStyle(color: Colors.black, fontSize: 18),
+
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 25.0),
+
+
                     ],
                   ),
                 )

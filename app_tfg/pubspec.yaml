@@ -29,6 +29,8 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/images/
+    - assets/images/perro_inicio.jpeg
+    - assets/images/logo.png
+
   uses-material-design: true
 
