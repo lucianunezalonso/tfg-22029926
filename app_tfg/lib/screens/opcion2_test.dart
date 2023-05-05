@@ -18,1268 +18,206 @@ class _Opcion2TestState extends State<Opcion2Test> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(19.0),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
 
               // PRIMERA PREGUNTA
 
-              Text('PRIMERA PREGUNTA'),
-
+              SizedBox(height: 16.0),
+              Text('PREGUNTA 1',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.0),),
+              Text('¿Incluirá a su mascota en actividades '
+                  'que supongan salir de casa periódicamente? (playa, vacaciones,'
+                  ' actividades de fin de semana…)'),
 
               Row(
-                children: <Widget>[
-
-                  // PUNTO 1
-                  Expanded(
+                children: [
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 1,
+                      title: Text('SÍ',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'si',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 2
-                  Expanded(
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 2,
+                      title: Text('NO',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'no',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 3
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 3,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 4
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 4,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 5
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 5,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
                 ],
-
 
               ),
 
 
               // SEGUNDA PREGUNTA
 
-              Text('SEGUNDA PREGUNTA'),
-
+              Text('PREGUNTA 2',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.0),),
+              Text('¿Su animal de compañía se relacionará generalmente'
+                  ' con su entorno y círculo de amistades o pasará más tiempo '
+                  'en su hogar?'),
 
               Row(
-                children: <Widget>[
-
-                  // PUNTO 1
-                  Expanded(
+                children: [
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 1,
+                      title: Text('ENTORNO',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'entorno',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 2
-                  Expanded(
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 2,
+                      title: Text('HOGAR',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'hogar',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 3
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 3,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 4
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 4,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 5
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 5,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
                 ],
-
-
               ),
 
               // TERCERA PREGUNTA
 
-              Text('TERCERA PREGUNTA'),
-
+              Text('PREGUNTA 3',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.0),),
+              Text('¿Cuánto tiempo pasará en casa o junto con el animal,'
+                  ' la mayor parte del día o periodos cortos en horarios intermitentes?'),
 
               Row(
-                children: <Widget>[
-
-                  // PUNTO 1
-                  Expanded(
+                children: [
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 1,
+                      title: Text('LA MAYOR PARTE DEL DÍA',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'dia',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 2
-                  Expanded(
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 2,
+                      title: Text('PERIODOS CORTOS',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'periodos',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 3
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 3,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 4
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 4,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 5
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 5,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
                 ],
-
-
               ),
-
 
               // CUARTA PREGUNTA
 
-              Text('CUARTA PREGUNTA'),
-
+              Text('PREGUNTA 4',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.0),),
+              Text('¿Convive con niños o tiene pensado hacerlo en un futuro?'),
 
               Row(
-                children: <Widget>[
-
-                  // PUNTO 1
-                  Expanded(
+                children: [
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 1,
+                      title: Text('SÍ',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'si',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 2
-                  Expanded(
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 2,
+                      title: Text('NO',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'no',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 3
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 3,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 4
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 4,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 5
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 5,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
                 ],
-
-
               ),
-
 
               // QUINTA PREGUNTA
 
-              Text('QUINTA PREGUNTA'),
-
-
-              Row(
-                children: <Widget>[
-
-                  // PUNTO 1
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 1,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 2
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 2,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 3
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 3,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 4
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 4,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 5
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 5,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                ],
-
-
-              ),
-
-              // SEXTA PREGUNTA
-
-              Text('SEXTA PREGUNTA'),
-
+              Text('PREGUNTA 5',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 10.0),),
+              Text('¿Su residencia cuenta con alguna zona en la que su'
+                  ' mascota se pueda mover libremente? (jardín, patio, finca…)'),
 
               Row(
-                children: <Widget>[
-
-                  // PUNTO 1
-                  Expanded(
+                children: [
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 1,
+                      title: Text('SÍ',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'si',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 2
-                  Expanded(
+                  Flexible(
                     child: RadioListTile(
-                      title: Text(''),
-                      value: 2,
+                      title: Text('NO',
+                        style: TextStyle(fontSize: 10.0),),
+                      value: 'no',
                       groupValue: _selectedValue,
                       onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
+                        setState(() { _selectedValue = value as int;});
                       },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
-
-
-                  // PUNTO 3
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 3,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 4
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 4,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 5
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 5,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
                 ],
-
-
               ),
 
 
-              // SÉPTIMA PREGUNTA
-
-              Text('SÉPTIMA PREGUNTA'),
 
 
-              Row(
-                children: <Widget>[
-
-                  // PUNTO 1
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 1,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
 
 
-                  // PUNTO 2
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 2,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 3
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 3,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 4
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 4,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                  // PUNTO 5
-                  Expanded(
-                    child: RadioListTile(
-                      title: Text(''),
-                      value: 5,
-                      groupValue: _selectedValue,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedValue = value as int;
-                        });
-                      },
-                      secondary: Container(
-                        width: 15.0,
-                        height: 15.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-
-                ],
-
-
-              ),
-
-
-                  ElevatedButton(
+              Center(
+                child: ElevatedButton(
                     onPressed: () {
                       // QUE APAREZCA OTRA PANTALLA CON EL RESULTADO DEL MODELO
                     },
-                    child: Text('Enviar'),
-                  ),
+                    child: Text('Enviar',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0),),
+                ),
+              ),
 
 
 
