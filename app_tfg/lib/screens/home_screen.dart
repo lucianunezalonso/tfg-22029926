@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     icon: Icon(Icons.pets_outlined, size: 50),
                     label: RichText(
-                      text: TextSpan(
+                      text: const TextSpan(
                         style: TextStyle(fontSize: 20),
                         children: [
                           TextSpan(text: '¿Necesitas que un animal sea adoptado? \n'),

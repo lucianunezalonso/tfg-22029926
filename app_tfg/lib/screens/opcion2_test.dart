@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/opcion2_2_test.dart';
 
 class Opcion2Test extends StatefulWidget {
   @override
@@ -7,7 +8,13 @@ class Opcion2Test extends StatefulWidget {
 
 class _Opcion2TestState extends State<Opcion2Test> {
 
-  int _selectedValue = 3; // Valor inicial
+  String _selectedValue1 = ''; // Valor inicial pregunta 1
+  String _selectedValue2 = ''; // Valor inicial pregunta 2
+  String _selectedValue3 = ''; // Valor inicial pregunta 3
+  String _selectedValue4 = ''; // Valor inicial pregunta 4
+  String _selectedValue5 = ''; // Valor inicial pregunta 5
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,40 +33,49 @@ class _Opcion2TestState extends State<Opcion2Test> {
               // PRIMERA PREGUNTA
 
               SizedBox(height: 16.0),
-              Text('PREGUNTA 1',style: TextStyle(
+              const Text('PREGUNTA 1',style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 10.0),),
-              Text('¿Incluirá a su mascota en actividades '
+              const Text('¿Incluirá a su mascota en actividades '
                   'que supongan salir de casa periódicamente? (playa, vacaciones,'
-                  ' actividades de fin de semana…)'),
+                  ' actividades de fin de semana…)',style: TextStyle(
+                  fontSize: 12.5),),
 
               Row(
                 children: [
                   Flexible(
                     child: RadioListTile(
-                      title: Text('SÍ',
-                        style: TextStyle(fontSize: 10.0),),
+                      title: const Text(
+                        'SÍ',
+                        style: TextStyle(fontSize: 10.0),
+                      ),
                       value: 'si',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue1,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() {
+                          _selectedValue1 = value as String;
+                        });
                       },
                     ),
                   ),
                   Flexible(
                     child: RadioListTile(
-                      title: Text('NO',
-                        style: TextStyle(fontSize: 10.0),),
+                      title: Text(
+                        'NO',
+                        style: TextStyle(fontSize: 10.0),
+                      ),
                       value: 'no',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue1,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() {
+                          _selectedValue1 = value as String;
+                        });
                       },
                     ),
                   ),
                 ],
-
               ),
+
 
 
               // SEGUNDA PREGUNTA
@@ -69,7 +85,8 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   fontSize: 10.0),),
               Text('¿Su animal de compañía se relacionará generalmente'
                   ' con su entorno y círculo de amistades o pasará más tiempo '
-                  'en su hogar?'),
+                  'en su hogar?',style: TextStyle(
+                  fontSize: 12.5),),
 
               Row(
                 children: [
@@ -78,9 +95,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('ENTORNO',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'entorno',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue2,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue2 = value as String;});
                       },
                     ),
                   ),
@@ -89,9 +106,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('HOGAR',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'hogar',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue2,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue2 = value as String;});
                       },
                     ),
                   ),
@@ -104,7 +121,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   fontWeight: FontWeight.bold,
                   fontSize: 10.0),),
               Text('¿Cuánto tiempo pasará en casa o junto con el animal,'
-                  ' la mayor parte del día o periodos cortos en horarios intermitentes?'),
+                  ' la mayor parte del día o periodos cortos en horarios intermitentes?'
+                ,style: TextStyle(
+                  fontSize: 12.5),),
 
               Row(
                 children: [
@@ -113,9 +132,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('LA MAYOR PARTE DEL DÍA',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'dia',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue3,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue3 = value as String;});
                       },
                     ),
                   ),
@@ -124,9 +143,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('PERIODOS CORTOS',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'periodos',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue3,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue3 = value as String;});
                       },
                     ),
                   ),
@@ -138,7 +157,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
               Text('PREGUNTA 4',style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 10.0),),
-              Text('¿Convive con niños o tiene pensado hacerlo en un futuro?'),
+              Text('¿Convive con niños o tiene pensado hacerlo en un futuro?'
+                ,style: TextStyle(
+                    fontSize: 12.5),),
 
               Row(
                 children: [
@@ -147,9 +168,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('SÍ',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'si',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue4,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue4 = value as String;});
                       },
                     ),
                   ),
@@ -158,9 +179,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('NO',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'no',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue4,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue4 = value as String;});
                       },
                     ),
                   ),
@@ -173,7 +194,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   fontWeight: FontWeight.bold,
                   fontSize: 10.0),),
               Text('¿Su residencia cuenta con alguna zona en la que su'
-                  ' mascota se pueda mover libremente? (jardín, patio, finca…)'),
+                  ' mascota se pueda mover libremente? (jardín, patio, finca…)'
+                ,style: TextStyle(
+                    fontSize: 12.5),),
 
               Row(
                 children: [
@@ -182,9 +205,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('SÍ',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'si',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue5,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue5 = value as String;});
                       },
                     ),
                   ),
@@ -193,9 +216,9 @@ class _Opcion2TestState extends State<Opcion2Test> {
                       title: Text('NO',
                         style: TextStyle(fontSize: 10.0),),
                       value: 'no',
-                      groupValue: _selectedValue,
+                      groupValue: _selectedValue5,
                       onChanged: (value) {
-                        setState(() { _selectedValue = value as int;});
+                        setState(() { _selectedValue5 = value as String;});
                       },
                     ),
                   ),
@@ -209,26 +232,28 @@ class _Opcion2TestState extends State<Opcion2Test> {
 
               Center(
                 child: ElevatedButton(
-                    onPressed: () {
-                      // QUE APAREZCA OTRA PANTALLA CON EL RESULTADO DEL MODELO
-                    },
-                    child: Text('Enviar',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15.0),),
+                  onPressed: () {
+                    // SIGUIENTE PÁGINA
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Opcion2_2Test(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Siguiente',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15.0,
+                    ),
+                  ),
                 ),
               ),
-
-
-
-
 
             ],
           ),
 
       ),
-
-
 
     );
   }
