@@ -342,39 +342,33 @@ class _Opcion1TestState extends State<Opcion1Test> {
                     onPressed: () {
                       if (_formKey.currentState?.validate() == true) {
                       // SE MANDAN LOS DATOS AL MODELO
-                          /*
-                          // Llamar a la función para enviar los datos al backend
-                          mandarVariables({
-                            'especie': _especie.toString(),
-                            'raza': _raza.toString(),
-                            'sexo': _sexo.toString(),
-                            'tamano': _tamano.toString(),
-                            'microchip': _microchip.toString(),
-                            'years_tiempo': _years_tiempo.toString(),
-                            'months_tiempo': _months_tiempo.toString(),
-                            'years_edad': _years_edad.toString(),
-                            'months_edad': _months_edad.toString(),
-                          });
-                          */
 
                         String raza= _raza.toString();
                         String especie= _especie.toString();
                         String sexo= _sexo.toString();
+                        String tamano = _tamano.toString();
+                        String microchip = _microchip.toString();
+                        String years_tiempo= _years_tiempo.toString();
+                        String months_tiempo= _months_tiempo.toString();
+                        String years_edad= _years_edad.toString();
+                        String months_edad= _months_edad.toString();
+
 
                         mandarVariables({
                           'especie': especie,
                           'raza': raza,
                           'sexo': sexo,
+                          'tamano': tamano,
+                          'microchip':microchip,
+                          'years_tiempo':years_tiempo,
+                          'months_tiempo':months_tiempo,
+                          'years_edad':years_edad,
+                          'months_edad':months_edad
                         });
 
-                        /*
-                        mandarVariables({
-                          'especie': 'perro',
-                          'raza': 'galgo',
-                          'sexo': 'macho',
-                        });
 
-                         */
+
+
 
                       }
                     },
@@ -396,102 +390,15 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
   // FUNCIÓN PARA MANDAR VARIABLES AL BACKEND
 
-  /*
-  Future<void> mandarVariables(List<dynamic> lista) async {
-    final url = Uri.parse('http://localhost:8080/recogerdatos1/');
-
-    final response = await http.post(
-      url,
-      body: lista,
+  Future mandarVariables(Map<String, dynamic> datos) async {
+    var response = await Dio().get(
+      "http://10.100.25.199:8000/recogerdatos1/",
+      queryParameters: datos,
+      options: Options(responseType: ResponseType.bytes),
     );
 
-    if (response.statusCode == 200) {
-      // La solicitud se realizó correctamente
-      print('Datos enviados correctamente');
-    } else {
-      // Ocurrió un error en la solicitud
-      print('Error al enviar los datos');
-    }
-  }
-
-   */
-
-  /*
-  void mandarVariables(Map<String, String> variables) async {
-    var url = 'http://localhost:8000/recogerdatos1';
-    var response = await http.get(Uri.parse(url), body: variables);
-
-    if (response.statusCode == 200) {
-      // Éxito en la solicitud
-      print('Solicitud enviada correctamente');
-      print(response.body);
-    } else {
-      // Error en la solicitud
-      print('Error en la solicitud');
-      print(response.statusCode);
-    }
-  }
-   */
-
-  /*
-  void mandarVariables(Map<String, String> variables) async {
-    var url = 'http://localhost:8000/recogerdatos1?';
-
-    // Concatenar los parámetros a la URL
-    variables.forEach((key, value) {
-      url += '$key=$value&';
-    });
-
-    var response = await http.get(Uri.parse(url));
-
-    if (response.statusCode == 200) {
-      // Éxito en la solicitud
-      print('Solicitud enviada correctamente');
-      print(response.body);
-    } else {
-      // Error en la solicitud
-      print('Error en la solicitud');
-      print(response.statusCode);
-    }
-  }
-
-   */
-   /*
-  void mandarVariables(Map<String, String> variables) async {
-    var baseUrl = 'localhost:8000';
-    var path = '/recogerdatos1';
-
-    var uri = Uri.http(baseUrl, path, variables);
-
-    var response = await http.get(uri);
-
-    if (response.statusCode == 200) {
-      // Éxito en la solicitud
-      print('Solicitud enviada correctamente');
-      print(response.body);
-    } else {
-      // Error en la solicitud
-      print('Error en la solicitud');
-      print(response.statusCode);
-    }
-  }
-
-    */
-  void mandarVariables(Map<String, String> variables) async {
-
-    var dio = Dio();
-
-    var response = await dio.get('http://localhost:8000/recogerdatos1/', queryParameters: variables);
-
-    if (response.statusCode == 200) {
-      // Éxito en la solicitud
-      print('Solicitud enviada correctamente');
-      print(response.data);
-    } else {
-      // Error en la solicitud
-      print('Error en la solicitud');
-      print(response.statusCode);
-    }
+    assert(response.statusCode == 200);
+    return response.data;
   }
 
 }
