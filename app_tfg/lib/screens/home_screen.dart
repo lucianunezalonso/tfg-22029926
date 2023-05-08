@@ -21,6 +21,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late User _currentUser;
+  bool isLoading= false;
+
+  Future<void> fetchData() async {
+    setState(() {
+      isLoading = true; // Mostrar el círculo de carga
+    });
+
+    // Realizar la carga de datos
+
+    setState(() {
+      isLoading = false; // Ocultar el círculo de carga
+    });
+  }
+
 
   @override
   void initState() {
@@ -175,11 +189,38 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => Opcion4Listado(),
-                        ),
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context) {
+                          return Dialog(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CircularProgressIndicator(),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    'Cargando...',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       );
+
+                      fetchData().then((_) {
+                        Navigator.pop(context); // Cierra el diálogo de carga
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Opcion4Listado(),
+                          ),
+                        );
+                      });
                     },
                     icon: Icon(Icons.home_outlined, size: 50),
                     label: RichText(
@@ -187,11 +228,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(fontSize: 20),
                         children: [
                           TextSpan(text: 'Listado de centros\n'),
-                          TextSpan(text: 'Información organizada y disponible', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
+                          TextSpan(
+                            text: 'Información organizada y disponible',
+                            style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
                         ],
                       ),
                     ),
-
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFF325434),
                       minimumSize: Size(double.infinity, 100),
@@ -199,8 +242,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-
                   ),
+
 
                   SizedBox(height: 10.0),
 

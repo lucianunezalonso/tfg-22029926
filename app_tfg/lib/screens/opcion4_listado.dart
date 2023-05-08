@@ -18,6 +18,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
   int currentPage = 1;
   int itemsPerPage = 5; // Número de elementos por página
   List<dynamic> allData = [];
+  bool isLoading = true; // Estado para controlar si los datos se están cargando
 
   @override
   void initState() {
@@ -27,14 +28,14 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
   Future<void> fetchData() async {
     try {
-      final response =
-      await Dio().get('http://192.168.8.121:8000/enviarcentros/');
+      final response = await Dio().get('http://192.168.8.121:8000/enviarcentros/');
 
       if (response.statusCode == 200) {
         // Decodificar la respuesta JSON
         List<dynamic> data = response.data;
         setState(() {
           allData = data;
+          isLoading = false; // Los datos se cargaron correctamente, cambiar isLoading a false
         });
       } else {
         throw Exception('Error al obtener los datos del dataframe');
@@ -78,7 +79,6 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> currentPageData = getCurrentPageData();
     final int totalPages = (allData.length / itemsPerPage).ceil();
 
     return Scaffold(
@@ -89,12 +89,13 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 10), // Espacio entre el AppBar y el primer elemento
+          SizedBox(height: 10),
           Expanded(
-            child: GridView.count(
-              crossAxisCount: 1, // Cambia a 1 para que sea una columna
-              childAspectRatio: 4, // Ajusta el aspect ratio para que las celdas tengan el mismo tamaño
-              children: currentPageData.map((item) {
+            child: allData.isNotEmpty
+                ? GridView.count(
+              crossAxisCount: 1,
+              childAspectRatio: 4,
+              children: getCurrentPageData().map((item) {
                 return GestureDetector(
                   onTap: () => navigateToDetalleCentro(item),
                   child: Container(
@@ -107,6 +108,9 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                   ),
                 );
               }).toList(),
+            )
+                : Center(
+              child: CircularProgressIndicator(),
             ),
           ),
           Row(
@@ -116,7 +120,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                 icon: Icon(Icons.arrow_back),
                 onPressed: previousPage,
               ),
-              Text('Página $currentPage de $totalPages'), // Mostrar el número de página y el total
+              Text('Página $currentPage de $totalPages'),
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: nextPage,
