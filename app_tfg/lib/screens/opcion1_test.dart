@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:app_tfg/screens/opcion1_output.dart';
+
 
 
 // CAMBIAR LAS IP AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -54,6 +56,10 @@ class _Opcion1TestState extends State<Opcion1Test> {
   }
 
   List<dynamic> variablesUsuario1 = [];
+  List<dynamic> allData = [];
+  List<dynamic> resultData = []; // Variable de instancia para almacenar los datos
+
+  // bool isLoading = true; // Estado para controlar si los datos se están cargando
 
 
   @override
@@ -369,9 +375,14 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           'months_edad':months_edad
                         });
 
+                        /*
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Opcion1Output(),
+                          ),
+                        );
 
-
-
+                         */
 
                       }
                     },
@@ -393,6 +404,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
   // FUNCIÓN PARA MANDAR VARIABLES AL BACKEND
 
+  /*
   Future mandarVariables(Map<String, dynamic> datos) async {
     var response = await Dio().get(
       "http://192.168.8.121:8000/recogerdatos1/",
@@ -402,6 +414,37 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
     assert(response.statusCode == 200);
     return response.data;
+  }
+
+   */
+
+  Future mandarVariables(Map<String, dynamic> datos) async {
+    try {
+      final response = await Dio().get(
+        "http://192.168.8.121:8000/recogerdatos1/",
+        queryParameters: datos
+      );
+
+      if (response.statusCode == 200) {
+        // Decodificar la respuesta JSON
+        List<dynamic> data = response.data;
+
+        resultData = data;
+
+        print(data);
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Opcion1Output(resultData: resultData),
+          ),
+        );
+      } else {
+        throw Exception('Error al obtener los datos del dataframe');
+      }
+    } catch (e) {
+      throw Exception('Error de conexión: $e');
+    }
   }
 
 }
