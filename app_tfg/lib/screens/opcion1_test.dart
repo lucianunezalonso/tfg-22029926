@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 
+
+// CAMBIAR LAS IP AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
 class Opcion1Test extends StatefulWidget {
   @override
   _Opcion1TestState createState() => _Opcion1TestState();
@@ -392,7 +395,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
   Future mandarVariables(Map<String, dynamic> datos) async {
     var response = await Dio().get(
-      "http://10.100.25.199:8000/recogerdatos1/",
+      "http://192.168.8.121:8000/recogerdatos1/",
       queryParameters: datos,
       options: Options(responseType: ResponseType.bytes),
     );
