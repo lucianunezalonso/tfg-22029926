@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
+import 'package:app_tfg/screens/opcion2_output.dart';
+
 
 
 class Opcion2_4Test extends StatefulWidget {
@@ -31,6 +34,8 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
     'Suelta pelo'
 
   ];
+
+  List<dynamic> resultData = []; // Variable de instancia para almacenar los datos
 
   void moveItemUp(int index) {
     setState(() {
@@ -142,7 +147,9 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
                   var combinedJson = {...objetoJson, ...objetoJson3};
 
                   // Convierte el map a json
-                  String json4 = json.encode(combinedJson);
+                  // String json4 = json.encode(combinedJson);
+
+                  mandarVariables2(combinedJson.cast<String, dynamic>());
 
                 },
                 child: Text(
@@ -164,4 +171,36 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
 
     );
   }
+
+  Future mandarVariables2(Map<String, dynamic> datos) async {
+    try {
+
+
+      final response = await Dio().get(
+          "http://192.168.8.121:8000/recogerdatos1/",
+          queryParameters: datos
+      );
+
+      if (response.statusCode == 200) {
+        // Decodificar la respuesta JSON
+        List<dynamic> data = response.data;
+
+        resultData = data;
+
+        print(data);
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Opcion2Output(resultData: resultData),
+          ),
+        );
+      } else {
+        throw Exception('Error al obtener los datos del dataframe');
+      }
+    } catch (e) {
+      throw Exception('Error de conexión: $e');
+    }
+  }
+
 }
