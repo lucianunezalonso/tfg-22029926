@@ -5,12 +5,14 @@ import 'package:dio/dio.dart';
 
 
 class Opcion1Output extends StatelessWidget {
-  List<dynamic> resultData;
+  final List<dynamic> resultData;
 
   Opcion1Output({required this.resultData});
 
   @override
   Widget build(BuildContext context) {
+    final firstPageData = resultData.sublist(0, 5); // Obtener los primeros 5 elementos
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -19,16 +21,19 @@ class Opcion1Output extends StatelessWidget {
       ),
       body: Center(
         child: ListView.builder(
-          itemCount: resultData.length,
+          itemCount: firstPageData.length,
           itemBuilder: (context, index) {
-            final item = resultData[index];
+            final item = firstPageData[index];
+            final itemIndex = index + 1; // Obtener el número de índice real
+
             return ListTile(
-              title: Text(item['Nombre'] ?? ''),
+              title: Text('$itemIndex. ${item['Nombre'] ?? ''}'),
               subtitle: Text(item['Direccion']?.toString() ?? ''),
             );
           },
         ),
       ),
+
     );
   }
 }
