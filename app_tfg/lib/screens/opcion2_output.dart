@@ -28,7 +28,7 @@ class Opcion2Output extends StatelessWidget {
 
             return ListTile(
               title: Text('$itemIndex. ${item['Nombre'] ?? ''}'),
-              subtitle: Text(item['Direccion']?.toString() ?? ''),
+              subtitle: Text(item['Raza']?.toString() ?? ''),
             );
           },
         ),

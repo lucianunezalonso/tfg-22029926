@@ -7,5 +7,7 @@ class GlobalVariable {
 
   GlobalVariable._internal();
 
-  String ip = '';
+  //  # 192.168.8.121 (CASA)
+
+  String ip = '192.168.8.121';
 }

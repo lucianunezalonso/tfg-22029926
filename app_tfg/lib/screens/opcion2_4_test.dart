@@ -4,6 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 import 'package:app_tfg/screens/opcion2_output.dart';
+import 'package:app_tfg/screens/GlobalVariable.dart';
+
 
 
 
@@ -135,10 +137,12 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
                 onPressed: () {
                   // PÁGINA DE LOS RESULTADOS DEL MODELO
                   Map<String, dynamic> objetoJson = {
-                    '1negativo':sortedItems[0],
-                    '2negativo': sortedItems[1],
-                    '3negativo': sortedItems[2],
-                    '4negativo': sortedItems[3],
+                    'negativo1':sortedItems[0],
+                    'negativo2': sortedItems[1],
+                    'negativo3': sortedItems[2],
+                    'negativo4': sortedItems[3],
+                    'negativo5':sortedItems[4],
+                    'negativo6':sortedItems[5]
                   };
 
                   var objetoJson3 = json.decode(json3);
@@ -146,6 +150,7 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
                   // Combino los dos json
                   var combinedJson = {...objetoJson, ...objetoJson3};
 
+                  print(combinedJson);
                   // Convierte el map a json
                   // String json4 = json.encode(combinedJson);
 
@@ -176,8 +181,9 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
     try {
 
 
+      print(datos);
       final response = await Dio().get(
-          "http://192.168.8.121:8000/recogerdatos1/",
+          "http://${GlobalVariable().ip}:8000/recogerdatos2/",
           queryParameters: datos
       );
 

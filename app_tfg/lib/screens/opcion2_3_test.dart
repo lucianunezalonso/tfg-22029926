@@ -131,10 +131,12 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
               child: ElevatedButton(
                 onPressed: () {
                   Map<String, dynamic> objetoJson = {
-                    '1positivo':sortedItems[0],
-                    '2positivo': sortedItems[1],
-                    '3positivo': sortedItems[2],
-                    '4positivo': sortedItems[3],
+                    'positivo1':sortedItems[0],
+                    'positivo2': sortedItems[1],
+                    'positivo3': sortedItems[2],
+                    'positivo4': sortedItems[3],
+                    'positivo5': sortedItems[4],
+                    'positivo6': sortedItems[5]
                   };
 
                   var objetoJson2 = json.decode(json2);

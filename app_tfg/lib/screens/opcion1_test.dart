@@ -1,7 +1,10 @@
+import 'package:app_tfg/screens/GlobalVariable.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:app_tfg/screens/opcion1_output.dart';
+import 'package:app_tfg/screens/GlobalVariable.dart';
+
 
 
 
@@ -440,7 +443,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
 
       final response = await Dio().get(
-        "http://192.168.8.121:8000/recogerdatos1/",
+        "http://${GlobalVariable().ip}:8000/recogerdatos1/",
         queryParameters: datos
       );
 

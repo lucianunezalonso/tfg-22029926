@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
+import 'package:app_tfg/screens/GlobalVariable.dart';
 
 
 // CAMBIAR LAS IP AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -28,7 +29,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
   Future<void> fetchData() async {
     try {
-      final response = await Dio().get('http://192.168.8.121:8000/enviarcentros/');
+      final response = await Dio().get('http://${GlobalVariable().ip}:8000/enviarcentros/');
 
       if (response.statusCode == 200) {
         // Decodificar la respuesta JSON
