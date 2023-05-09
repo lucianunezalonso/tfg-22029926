@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import '../screens/opcion2_2_test.dart';
 
@@ -228,17 +230,28 @@ class _Opcion2TestState extends State<Opcion2Test> {
 
 
 
-
-
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // SIGUIENTE PÁGINA
+                    // ME COGE LAS VARIABLES DE ESTA PÁGINA
+                    Map<String, dynamic> objetoJson = {
+                      'actividades':_selectedValue1,
+                      'relaciones': _selectedValue2,
+                      'casa': _selectedValue3,
+                      'niños': _selectedValue4,
+                      'patio':_selectedValue5
+                    };
+
+                    // Convierte el map a json
+                    String json1 = jsonEncode(objetoJson);
+
+                    // Me las manda a la pagina siguiente
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => Opcion2_2Test(),
+                        builder: (context) => Opcion2_2Test(json1: json1),
                       ),
                     );
+
                   },
                   child: Text(
                     'Siguiente',

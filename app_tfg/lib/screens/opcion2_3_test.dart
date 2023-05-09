@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 import '../screens/opcion2_4_test.dart';
@@ -7,9 +9,21 @@ import '../screens/opcion2_4_test.dart';
 class Opcion2_3Test extends StatefulWidget {
   @override
   _Opcion2_3TestState createState() => _Opcion2_3TestState();
+
+  final String json2;
+  Opcion2_3Test({required this.json2});
 }
 
 class _Opcion2_3TestState extends State<Opcion2_3Test> {
+  late String json2;
+  late List<String> sortedItems;
+
+  @override
+  void initState() {
+    super.initState();
+    json2 = widget.json2;
+    sortedItems = List.from(items);
+  }
 
   List<String> items = [
     'Lealtad',
@@ -20,24 +34,30 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
     'Capacidad de adaptación'
   ];
 
+
   void moveItemUp(int index) {
     setState(() {
       if (index > 0) {
-        final item = items.removeAt(index);
-        items.insert(index - 1, item);
+        final item = sortedItems.removeAt(index);
+        sortedItems.insert(index - 1, item);
+
+        final originalItem = items.removeAt(index);
+        items.insert(index - 1, originalItem);
       }
     });
   }
 
   void moveItemDown(int index) {
     setState(() {
-      if (index < items.length - 1) {
-        final item = items.removeAt(index);
-        items.insert(index + 1, item);
+      if (index < sortedItems.length - 1) {
+        final item = sortedItems.removeAt(index);
+        sortedItems.insert(index + 1, item);
+
+        final originalItem = items.removeAt(index);
+        items.insert(index + 1, originalItem);
       }
     });
   }
-
 
 
   @override
@@ -110,12 +130,28 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                      // SIGUIENTE PÁGINA
-                      Navigator.of(context).push(
+                  Map<String, dynamic> objetoJson = {
+                    '1positivo':sortedItems[0],
+                    '2positivo': sortedItems[1],
+                    '3positivo': sortedItems[2],
+                    '4positivo': sortedItems[3],
+                  };
+
+                  var objetoJson2 = json.decode(json2);
+
+                  // Combino los dos json
+                  var combinedJson = {...objetoJson, ...objetoJson2};
+
+                  // Convierte el map a json
+                  String json3 = json.encode(combinedJson);
+
+                  // Me las manda a la pagina siguiente
+                  Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => Opcion2_4Test(),
+                      builder: (context) => Opcion2_4Test(json3: json3),
                     ),
                   );
+
                 },
                 child: Text(
                   'Siguiente',

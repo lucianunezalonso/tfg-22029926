@@ -59,7 +59,9 @@ class _Opcion1TestState extends State<Opcion1Test> {
   List<dynamic> allData = [];
   List<dynamic> resultData = []; // Variable de instancia para almacenar los datos
 
-  // bool isLoading = true; // Estado para controlar si los datos se están cargando
+  bool isLoading = false; // Estado para controlar si los datos se están cargando
+
+
 
 
   @override
@@ -352,6 +354,10 @@ class _Opcion1TestState extends State<Opcion1Test> {
                       if (_formKey.currentState?.validate() == true) {
                       // SE MANDAN LOS DATOS AL MODELO
 
+                        setState(() {
+                          isLoading = true; // Mostrar indicador de carga
+                        });
+
                         String raza= _raza.toString();
                         String especie= _especie.toString();
                         String sexo= _sexo.toString();
@@ -375,6 +381,10 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           'months_edad':months_edad
                         });
 
+                        setState(() {
+                          isLoading = false; // Ocultar indicador de carga
+                        });
+
                         /*
                         Navigator.of(context).push(
                           MaterialPageRoute(
@@ -395,6 +405,13 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           fontSize: 18.0),),
                   ),
                 ),
+                if (isLoading)
+                  Container(
+                    color: Colors.black.withOpacity(0.5),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
               ],
             ),
           ),
@@ -420,6 +437,8 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
   Future mandarVariables(Map<String, dynamic> datos) async {
     try {
+
+
       final response = await Dio().get(
         "http://192.168.8.121:8000/recogerdatos1/",
         queryParameters: datos

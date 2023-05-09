@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 
@@ -5,9 +7,20 @@ import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 class Opcion2_4Test extends StatefulWidget {
   @override
   _Opcion2_4TestState createState() => _Opcion2_4TestState();
+  final String json3;
+  Opcion2_4Test({required this.json3});
 }
 
 class _Opcion2_4TestState extends State<Opcion2_4Test> {
+  late String json3;
+  late List<String> sortedItems;
+
+  @override
+  void initState() {
+    super.initState();
+    json3 = widget.json3;
+    sortedItems = List.from(items);
+  }
 
   List<String> items = [
     'Brutaldad',
@@ -22,17 +35,23 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
   void moveItemUp(int index) {
     setState(() {
       if (index > 0) {
-        final item = items.removeAt(index);
-        items.insert(index - 1, item);
+        final item = sortedItems.removeAt(index);
+        sortedItems.insert(index - 1, item);
+
+        final originalItem = items.removeAt(index);
+        items.insert(index - 1, originalItem);
       }
     });
   }
 
   void moveItemDown(int index) {
     setState(() {
-      if (index < items.length - 1) {
-        final item = items.removeAt(index);
-        items.insert(index + 1, item);
+      if (index < sortedItems.length - 1) {
+        final item = sortedItems.removeAt(index);
+        sortedItems.insert(index + 1, item);
+
+        final originalItem = items.removeAt(index);
+        items.insert(index + 1, originalItem);
       }
     });
   }
@@ -110,6 +129,21 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
               child: ElevatedButton(
                 onPressed: () {
                   // PÁGINA DE LOS RESULTADOS DEL MODELO
+                  Map<String, dynamic> objetoJson = {
+                    '1negativo':sortedItems[0],
+                    '2negativo': sortedItems[1],
+                    '3negativo': sortedItems[2],
+                    '4negativo': sortedItems[3],
+                  };
+
+                  var objetoJson3 = json.decode(json3);
+
+                  // Combino los dos json
+                  var combinedJson = {...objetoJson, ...objetoJson3};
+
+                  // Convierte el map a json
+                  String json4 = json.encode(combinedJson);
+
                 },
                 child: Text(
                   'Siguiente',

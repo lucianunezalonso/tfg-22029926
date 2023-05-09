@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import '../screens/opcion2_3_test.dart';
+import 'dart:convert';
 
 class Opcion2_2Test extends StatefulWidget {
   @override
   _Opcion2_2TestState createState() => _Opcion2_2TestState();
+
+  final String json1;
+
+  Opcion2_2Test({required this.json1});
+
 }
 
-class _Opcion2_2TestState extends State<Opcion2_2Test> {
+class _Opcion2_2TestState extends State<Opcion2_2Test>  {
+
+  late String json1;
+
+  @override
+  void initState() {
+    super.initState();
+    json1 = widget.json1;
+  }
 
   String _selectedValue6 = ''; // Valor inicial pregunta 6
   String _selectedValue7 = ''; // Valor inicial pregunta 7
@@ -184,12 +198,29 @@ class _Opcion2_2TestState extends State<Opcion2_2Test> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // SIGUIENTE PÁGINA
+
+                  Map<String, dynamic> objetoJson = {
+                    'ppp':_selectedValue6,
+                    'cariño': _selectedValue7,
+                    'animales': _selectedValue8,
+                    'especie': _selectedOption,
+                  };
+
+                  var objetoJson1 = json.decode(json1);
+
+                  // Combino los dos json
+                  var combinedJson = {...objetoJson1, ...objetoJson};
+
+                  // Convierte el map a json
+                  String json2 = json.encode(combinedJson);
+
+                  // Me las manda a la pagina siguiente
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => Opcion2_3Test(),
+                      builder: (context) => Opcion2_3Test(json2: json2),
                     ),
                   );
+
 
                 },
                 child: Text(
