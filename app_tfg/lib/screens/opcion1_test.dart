@@ -62,7 +62,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
   List<dynamic> allData = [];
   List<dynamic> resultData = []; // Variable de instancia para almacenar los datos
 
-  bool isLoading = false; // Estado para controlar si los datos se están cargando
+  bool _isLoading = false; // Estado para controlar si los datos se están cargando
 
 
 
@@ -77,7 +77,11 @@ class _Opcion1TestState extends State<Opcion1Test> {
         centerTitle: true,
       ),
 
-      body: Padding(
+      body: _isLoading
+          ? Center(
+            child: CircularProgressIndicator(),
+          )
+          : Padding(
 
           padding: EdgeInsets.all(16.0),
           child: Form(
@@ -357,9 +361,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
                       if (_formKey.currentState?.validate() == true) {
                       // SE MANDAN LOS DATOS AL MODELO
 
-                        setState(() {
-                          isLoading = true; // Mostrar indicador de carga
-                        });
+
 
                         String raza= _raza.toString();
                         String especie= _especie.toString();
@@ -384,9 +386,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           'months_edad':months_edad
                         });
 
-                        setState(() {
-                          isLoading = false; // Ocultar indicador de carga
-                        });
+
 
                         /*
                         Navigator.of(context).push(
@@ -408,13 +408,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           fontSize: 18.0),),
                   ),
                 ),
-                if (isLoading)
-                  Container(
-                    color: Colors.black.withOpacity(0.5),
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
+
               ],
             ),
           ),
@@ -438,13 +432,16 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
    */
 
-  Future mandarVariables(Map<String, dynamic> datos) async {
+  Future<void> mandarVariables(Map<String, dynamic> datos) async {
     try {
-
+      // Mostrar la pantalla de carga
+      setState(() {
+        _isLoading = true;
+      });
 
       final response = await Dio().get(
         "http://${GlobalVariable().ip}:8000/recogerdatos1/",
-        queryParameters: datos
+        queryParameters: datos,
       );
 
       if (response.statusCode == 200) {
@@ -465,9 +462,15 @@ class _Opcion1TestState extends State<Opcion1Test> {
         throw Exception('Error al obtener los datos del dataframe');
       }
     } catch (e) {
+      // Ocultar la pantalla de carga
+      setState(() {
+        _isLoading = false;
+      });
+
       throw Exception('Error de conexión: $e');
     }
   }
+
 
 }
 
