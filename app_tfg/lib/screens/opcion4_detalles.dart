@@ -10,16 +10,73 @@ class Opcion4Detalles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detalles del centro'),
+        backgroundColor: Colors.black,
+        title: Text('${centro['Nombre']}'),
+        centerTitle: true,
       ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Nombre: ${centro['Nombre']}'),
+            Text('${centro['Nombre']}'),
+            SizedBox(height: 20.0),
 
-            Text('Dirección: ${centro['Direccion']}'),
-            // Agrega aquí otros detalles que desees mostrar
+            Text('${centro['Direccion']}',textAlign: TextAlign.center,),
+            SizedBox(height: 20.0),
+
+            Table(
+              border: TableBorder.all(color: Colors.grey),
+              defaultColumnWidth: IntrinsicColumnWidth(),
+              children: [
+                TableRow(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                  ),
+                  children: [
+                    TableCell(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Atributo 1',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    TableCell(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('Valor 1'),
+                      ),
+                    ),
+                  ],
+                ),
+                TableRow(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                  ),
+                  children: [
+                    TableCell(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Atributo 2',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    TableCell(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text('Valor 2'),
+                      ),
+                    ),
+                  ],
+                ),
+                // Agrega más filas según tus datos
+              ],
+            ),
+
           ],
         ),
       ),
