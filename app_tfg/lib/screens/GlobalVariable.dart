@@ -7,7 +7,8 @@ class GlobalVariable {
 
   GlobalVariable._internal();
 
-  //  # 192.168.8.121 (CASA)
+  // 192.168.8.121 (CASA)
+  // 172.20.10.13 (MÓVIL)
 
-  String ip = '192.168.8.121';
+  String ip = '172.20.10.13';
 }

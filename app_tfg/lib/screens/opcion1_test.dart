@@ -224,55 +224,55 @@ class _Opcion1TestState extends State<Opcion1Test> {
                 SizedBox(
                 height: 38,
                 child:
-                    Row(
-                      children: [
-                        Flexible(
-                          child: TextFormField(
-                            controller: _yearsControllerEdad,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              labelText: 'Años',
-                              hintText: '0-12',
-                            ),
-                            validator: (value) {
-                              final years = int.tryParse(value ?? '');
-                              if (years == null || years < 0 || years > 25) {
-                                return 'Ingresa un valor entre 0 y 25';
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              setState(() {
-                                _years_edad = int.tryParse(value ?? '') ?? 0;
-                              });
-                            },
-                          ),
+                Row(
+                  children: [
+                    Flexible(
+                      child: TextFormField(
+                        controller: _yearsControllerEdad,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: _years_edad == 0 ? 'Años' : '',
+                          hintText: '0-12',
                         ),
-                        //const SizedBox(width: 16.0),
-                        Flexible(
-                          child: TextFormField(
-                            controller: _monthsControllerEdad,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              labelText: 'Meses',
-                              hintText: '0-11',
-                            ),
-                            validator: (value) {
-                              final months = int.tryParse(value ?? '');
-                              if (months == null || months < 0 || months > 12) {
-                                return 'Ingresa un valor entre 0 y 12';
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              setState(() {
-                                _months_edad = int.tryParse(value ?? '') ?? 0;
-                              });
-                            },
-                          ),
-                        ),
-                      ],
+                        validator: (value) {
+                          final years = int.tryParse(value ?? '');
+                          if (years == null || years < 0 || years > 25) {
+                            return 'Ingresa un valor entre 0 y 25';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          setState(() {
+                            _years_edad = int.tryParse(value ?? '') ?? 0;
+                          });
+                        },
+                      ),
                     ),
+                    Flexible(
+                      child: TextFormField(
+                        controller: _monthsControllerEdad,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: _months_edad == 0 ? 'Meses' : '',
+                          hintText: '0-11',
+                        ),
+                        validator: (value) {
+                          final months = int.tryParse(value ?? '');
+                          if (months == null || months < 0 || months > 12) {
+                            return 'Ingresa un valor entre 0 y 12';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          setState(() {
+                            _months_edad = int.tryParse(value ?? '') ?? 0;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
                 ),
                 SizedBox(height: 13.0),
 
@@ -287,55 +287,55 @@ class _Opcion1TestState extends State<Opcion1Test> {
                 SizedBox(
                   height: 38,
                   child:
-                    Row(
-                      children: [
-                        Flexible(
-                          child: TextFormField(
-                            controller: _yearsControllerTiempo,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              labelText: 'Años',
-                              hintText: '0-12',
-                            ),
-                            validator: (value) {
-                              final years = int.tryParse(value ?? '');
-                              if (years == null || years < 0 || years > 25) {
-                                return 'Ingresa un valor entre 0 y 25';
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              setState(() {
-                                _years_tiempo = int.tryParse(value ?? '') ?? 0;
-                              });
-                            },
+                  Row(
+                    children: [
+                      Flexible(
+                        child: TextFormField(
+                          controller: _yearsControllerTiempo,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            labelText: _years_tiempo == 0 ? 'Años' : '',
+                            hintText: '0-12',
                           ),
+                          validator: (value) {
+                            final years = int.tryParse(value ?? '');
+                            if (years == null || years < 0 || years > 25) {
+                              return 'Ingresa un valor entre 0 y 25';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _years_tiempo = int.tryParse(value ?? '') ?? 0;
+                            });
+                          },
                         ),
-                        //const SizedBox(width: 16.0),
-                        Flexible(
-                          child: TextFormField(
-                            controller: _monthsControllerTiempo,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              labelText: 'Meses',
-                              hintText: '0-11',
-                            ),
-                            validator: (value) {
-                              final months = int.tryParse(value ?? '');
-                              if (months == null || months < 0 || months > 12) {
-                                return 'Ingresa un valor entre 0 y 12';
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              setState(() {
-                                _months_tiempo = int.tryParse(value ?? '') ?? 0;
-                              });
-                            },
+                      ),
+                      Flexible(
+                        child: TextFormField(
+                          controller: _monthsControllerTiempo,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            labelText: _months_tiempo == 0 ? 'Meses' : '',
+                            hintText: '0-11',
                           ),
+                          validator: (value) {
+                            final months = int.tryParse(value ?? '');
+                            if (months == null || months < 0 || months > 12) {
+                              return 'Ingresa un valor entre 0 y 12';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _months_tiempo = int.tryParse(value ?? '') ?? 0;
+                            });
+                          },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
+
                 ),
               //---------------------------------------------------------------- MICROCHIP
                 CheckboxListTile(
