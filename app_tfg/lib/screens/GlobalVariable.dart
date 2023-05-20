@@ -9,6 +9,8 @@ class GlobalVariable {
 
   // 192.168.8.121 (CASA)
   // 172.20.10.13 (MÓVIL)
+  // 10.100.25.199 (UNIVERSIDAD)
 
-  String ip = '172.20.10.13';
+
+  String ip = '192.168.8.121';
 }
