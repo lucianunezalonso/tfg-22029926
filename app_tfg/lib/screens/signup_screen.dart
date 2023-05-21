@@ -46,12 +46,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 22.0),
                 Image.asset(
                   'assets/images/logo.png', // Ruta de la imagen en el directorio de activos
-                  width: 200, // Ancho de la imagen
-                  height: 200, // Alto de la imagen
                 ),
+                SizedBox(height: 80),
 
                 Form(
                   key: _registerFormKey,
@@ -152,7 +150,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               },
                               child: Text(
                                 'Regístrate',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white,
+                                  fontSize: 17,),
+
                               ),
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(Colors.black),

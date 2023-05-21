@@ -75,12 +75,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      //SizedBox(height: 22.0),
+                      SizedBox(height: 50.0),
                       Image.asset(
                         'assets/images/logo.png', // Ruta de la imagen en el directorio de activos
-                        width: 500, // Ancho de la imagen
-                        height: 500, // Alto de la imagen
                       ),
+                      SizedBox(height: 90),
+
                       Form(
                         key: _formKey,
                         child: Column(

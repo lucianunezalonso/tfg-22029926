@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Mapa extends StatefulWidget {
   final List<dynamic> centros;
@@ -12,6 +13,13 @@ class Mapa extends StatefulWidget {
 }
 
 class _MapaState extends State<Mapa> {
+  final theme = ThemeData(
+    textTheme: TextTheme(
+      headline1: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+      headline2: GoogleFonts.montserrat(fontStyle: FontStyle.italic),
+    ),
+  );
+
   List<LatLng> polygonPoints = []; // Puntos del polígono dibujado
 
   Set<Polygon> polygons = {};
@@ -20,7 +28,9 @@ class _MapaState extends State<Mapa> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        theme: theme,
+        home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text('Mapa'),
@@ -81,6 +91,7 @@ class _MapaState extends State<Mapa> {
         backgroundColor: Colors.black, // Establecer el color de fondo en gris
 
       ),
+        ),
     );
   }
 }
