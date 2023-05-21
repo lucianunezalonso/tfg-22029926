@@ -11,7 +11,7 @@ class Opcion2Output extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firstPageData = resultData.sublist(0, 5); // Obtener los primeros 5 elementos
+    final firstPageData = resultData.sublist(0, 7); // Obtener los primeros 5 elementos
 
     return Scaffold(
       appBar: AppBar(

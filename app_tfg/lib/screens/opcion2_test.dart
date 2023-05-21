@@ -251,13 +251,16 @@ class _Opcion2TestState extends State<Opcion2Test> {
                         builder: (context) => Opcion2_2Test(json1: json1),
                       ),
                     );
-
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFE0BB76), // Establecer el color de fondo del botón
+                  ),
                   child: Text(
                     'Siguiente',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0,
+                      color: Colors.white
                     ),
                   ),
                 ),

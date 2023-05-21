@@ -5,8 +5,8 @@ import '../screens/login_screen.dart';
 
 import '../screens/opcion1_test.dart';
 import '../screens/opcion2_test.dart';
-import '../screens/opcion3_listado.dart';
 import '../screens/opcion4_listado.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../helper/firebase_auth.dart';
 
@@ -44,10 +44,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+    final theme = ThemeData(
+      textTheme: TextTheme(
+        headline1: GoogleFonts.montserrat(fontWeight: FontWeight.bold),
+        headline2: GoogleFonts.montserrat(fontStyle: FontStyle.italic),
+      ),
+    );
+
+    return MaterialApp(
+      theme: theme,
+      home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text('AdoptionMovement'),
+
         centerTitle: true,
       ),
 
@@ -108,17 +119,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     icon: Icon(Icons.favorite_outline, size: 48),
                     label: RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         style: TextStyle(fontSize: 20),
                         children: [
                           TextSpan(text: '¿Necesitas que un animal sea adoptado?\n'),
-                          TextSpan(text: 'Te recomendamos a donde llevarlo', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
+                          TextSpan(text: '\n', style: GoogleFonts.montserrat(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 6,
+                          )
+                          ),
+                          TextSpan(text: 'Te recomendamos a donde llevarlo', style: GoogleFonts.montserrat(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            )
+                          ),
                         ],
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
                       primary:  Color(0xFFEE892F),
-                      minimumSize: Size(double.infinity, 120),
+                      minimumSize: Size(double.infinity, 110),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -142,13 +162,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(fontSize: 20),
                         children: [
                           TextSpan(text: 'Haz el test de compatibilidad\n'),
-                          TextSpan(text: 'Con los resultados sabremos qué animales se adaptan a ti', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
+                          TextSpan(text: '\n', style: GoogleFonts.montserrat(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 6,
+                          )
+                          ),
+                          TextSpan(text: 'Con los resultados sabrás qué animales se adaptarían mejor a ti', style: GoogleFonts.montserrat(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                          )
+                          ),
                         ],
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
                       primary:  Color(0xFFE0BB76),
-                      minimumSize: Size(double.infinity, 120),
+                      minimumSize: Size(double.infinity, 110),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -198,16 +227,23 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(fontSize: 20),
                         children: [
                           TextSpan(text: 'Listado de centros\n'),
+                          TextSpan(text: '\n', style: GoogleFonts.montserrat(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 6,
+                          )
+                          ),
                           TextSpan(
-                            text: 'Información organizada y disponible',
-                            style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18),
+                            text: 'Información organizada y accesible', style: GoogleFonts.montserrat(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                          )
                           ),
                         ],
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFF6E896A),
-                      minimumSize: Size(double.infinity, 130),
+                      minimumSize: Size(double.infinity, 110),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -228,7 +264,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    child: const Text('Cerrar sesión'),
+                    child: const Text('Cerrar sesión',
+                      style: TextStyle(fontSize: 18),),
                     style:
                       ElevatedButton.styleFrom(
                         primary: Colors.black,
@@ -243,6 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         )
+      )
       )
     );
   }

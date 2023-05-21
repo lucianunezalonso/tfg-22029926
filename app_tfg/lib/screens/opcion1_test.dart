@@ -73,7 +73,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
     return Scaffold(
         appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Características del animal:'),
+        title: Text('Características del animal'),
         centerTitle: true,
       ),
 
@@ -388,19 +388,11 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
 
 
-                        /*
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => Opcion1Output(),
-                          ),
-                        );
-
-                         */
-
                       }
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize: Size(90, 40),
+                      backgroundColor: Color(0xFFEE892F)
                     ),
                     child: Text('Enviar',
                       style: TextStyle(
@@ -416,21 +408,6 @@ class _Opcion1TestState extends State<Opcion1Test> {
       );
   }
 
-  // FUNCIÓN PARA MANDAR VARIABLES AL BACKEND
-
-  /*
-  Future mandarVariables(Map<String, dynamic> datos) async {
-    var response = await Dio().get(
-      "http://192.168.8.121:8000/recogerdatos1/",
-      queryParameters: datos,
-      options: Options(responseType: ResponseType.bytes),
-    );
-
-    assert(response.statusCode == 200);
-    return response.data;
-  }
-
-   */
 
   Future<void> mandarVariables(Map<String, dynamic> datos) async {
     try {

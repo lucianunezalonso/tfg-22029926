@@ -34,6 +34,8 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
   bool isMapLoading = false;
 
+  List<dynamic> filteredCentros = []; // Variable para almacenar los centros filtrados
+
 
 
   @override

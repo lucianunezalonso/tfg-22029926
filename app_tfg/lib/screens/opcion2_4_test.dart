@@ -96,41 +96,51 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
               itemCount: items.length,
               itemBuilder: (context, index) {
                 final rankNumber = index + 1;
-                return ListTile(
-                  leading: CircleAvatar(
-                    radius: 12.0, // Valor del radio más pequeño
-                    child: Text(rankNumber.toString(),
-                      style: TextStyle(fontSize: 12.0),
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 6.0), // Establecer el espacio vertical entre cada elemento de la lista
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      color: Colors.grey[200],
+                    ),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        radius: 12.0,
+                        backgroundColor: Colors.grey[600], // Color de fondo más oscuro
+                        child: Text(
+                          rankNumber.toString(),
+                          style: TextStyle(fontSize: 12.0,color: Colors.white),
+                        ),
+                      ),
+                      title: Text(
+                        items[index],
+                        style: TextStyle(fontSize: 13.0),
+                      ),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.arrow_upward),
+                            iconSize: 20.0,
+                            onPressed: () => moveItemUp(index),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.arrow_downward),
+                            iconSize: 20.0,
+                            onPressed: () => moveItemDown(index),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  title: Text(items[index],
-                    style: TextStyle(fontSize: 12.0),),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.arrow_upward),
-                        iconSize: 20.0, // Tamaño del icono
-                        onPressed: () => moveItemUp(index),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.arrow_downward),
-                        iconSize: 20.0, // Tamaño del icono
-                        onPressed: () => moveItemDown(index),
-                      ),
-
-                    ],
-                  ),
                 );
+
+
               },
             ),
 
 
             SizedBox(height: 20.0),
-
-
-
-
 
             Center(
               child: ElevatedButton(
@@ -157,23 +167,22 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
                   mandarVariables2(combinedJson.cast<String, dynamic>());
 
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFFE0BB76), // Establecer el color de fondo del botón
+                ),
                 child: Text(
                   'Siguiente',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15.0,
+                    color: Colors.white
                   ),
                 ),
               ),
             ),
-
-
           ],
         ),
-
       ),
-
-
     );
   }
 

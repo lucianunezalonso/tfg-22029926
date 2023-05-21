@@ -26,6 +26,9 @@ dependencies:
   flutter_map: ^0.13.0
   latlong2: any
   charts_flutter: ^0.12.0
+  google_maps_flutter: ^2.2.6
+  google_fonts: ^4.0.4
+
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +43,10 @@ flutter:
   assets:
     - assets/images/perro_inicio.jpeg
     - assets/images/logo.png
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-VariableFont_wght.ttf
 
   uses-material-design: true
 
