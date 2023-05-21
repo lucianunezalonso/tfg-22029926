@@ -92,10 +92,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Text(
                     '¡Hola ${_currentUser.displayName}!',
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 22.0),
                   ),
-                  Text('\n¿Qué quieres hacer hoy?'),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 10.0),
+                  Text('¿Qué quieres hacer hoy?',
+                    style: TextStyle(fontSize: 17.0),),
+                  SizedBox(height: 20.0),
                   ElevatedButton.icon(
                     onPressed: () {
                       Navigator.of(context).push(
@@ -104,19 +106,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    icon: Icon(Icons.pets_outlined, size: 50),
+                    icon: Icon(Icons.favorite_outline, size: 48),
                     label: RichText(
                       text: const TextSpan(
                         style: TextStyle(fontSize: 20),
                         children: [
-                          TextSpan(text: '¿Necesitas que un animal sea adoptado? \n'),
+                          TextSpan(text: '¿Necesitas que un animal sea adoptado?\n'),
                           TextSpan(text: 'Te recomendamos a donde llevarlo', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
                         ],
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
                       primary:  Color(0xFFEE892F),
-                      minimumSize: Size(double.infinity, 100),
+                      minimumSize: Size(double.infinity, 120),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -134,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    icon: Icon(Icons.list_alt_sharp, size:50),
+                    icon: Icon(Icons.list_alt_sharp, size:48),
                     label: RichText(
                       text: TextSpan(
                         style: TextStyle(fontSize: 20),
@@ -146,39 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     style: ElevatedButton.styleFrom(
                       primary:  Color(0xFFE0BB76),
-                      minimumSize: Size(double.infinity, 100),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  ),
-
-
-                  SizedBox(height: 10.0),
-
-
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => Opcion3Listado(),
-                        ),
-                      );
-                    },
-                    icon: Icon(Icons.favorite_outline, size:50),
-                    label: RichText(
-                      text: TextSpan(
-                        style: TextStyle(fontSize: 20),
-                        children: [
-                          TextSpan(text: 'Listado de compatibles\n'),
-                          TextSpan(text: 'Entre ellos podría estar tu nuevo compañero', style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 18)),
-                        ],
-                      ),
-                    ),
-
-                    style: ElevatedButton.styleFrom(
-                      primary:  Color(0xFF6E896A),
-                      minimumSize: Size(double.infinity, 100),
+                      minimumSize: Size(double.infinity, 120),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -222,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       });
                     },
-                    icon: Icon(Icons.home_outlined, size: 50),
+                    icon: Icon(Icons.home_outlined, size: 48),
                     label: RichText(
                       text: TextSpan(
                         style: TextStyle(fontSize: 20),
@@ -236,8 +206,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF325434),
-                      minimumSize: Size(double.infinity, 100),
+                      primary: Color(0xFF6E896A),
+                      minimumSize: Size(double.infinity, 130),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

@@ -1,14 +1,9 @@
-import 'package:app_tfg/screens/opcion4_detalles.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
-import 'dart:convert';
 import 'package:app_tfg/screens/GlobalVariable.dart';
+import 'package:app_tfg/screens/mapa.dart';
+import 'package:app_tfg/screens/opcion4_detalles.dart';
 
-class Opcion4Listado extends StatefulWidget {
-  @override
-  _Opcion4ListadoState createState() => _Opcion4ListadoState();
-}
 
 class ListItem {
   String title;
@@ -22,6 +17,11 @@ class ListItem {
   });
 }
 
+class Opcion4Listado extends StatefulWidget {
+  @override
+  _Opcion4ListadoState createState() => _Opcion4ListadoState();
+}
+
 class _Opcion4ListadoState extends State<Opcion4Listado> {
   int currentPage = 1;
   int itemsPerPage = 5; // Número de elementos por página
@@ -32,6 +32,10 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
   List<ListItem> favoriteItems = [];
 
+  bool isMapLoading = false;
+
+
+
   @override
   void initState() {
     super.initState();
@@ -40,16 +44,14 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
   Future<void> fetchData() async {
     try {
-      final response = await Dio().get(
-          'http://${GlobalVariable().ip}:8000/enviarcentros/');
+      final response = await Dio().get('http://${GlobalVariable().ip}:8000/enviarcentros/');
 
       if (response.statusCode == 200) {
         // Decodificar la respuesta JSON
         List<dynamic> data = response.data;
         setState(() {
           allData = data;
-          isLoading =
-          false; // Los datos se cargaron correctamente, cambiar isLoading a false
+          isLoading = false; // Los datos se cargaron correctamente, cambiar isLoading a false
         });
       } else {
         throw Exception('Error al obtener los datos del dataframe');
@@ -60,19 +62,26 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
   }
 
   List<ListItem> getCurrentPageData() {
-    final int startIndex = (currentPage - 1) * itemsPerPage;
-    final int endIndex = startIndex + itemsPerPage;
-
-    List<ListItem> itemsToShow = allData.sublist(startIndex, endIndex).map((item) {
-      return ListItem(
-        title: item['Nombre'] ?? '',
-        subtitle: item['Direccion']?.toString() ?? '',
-        isFavorite: favoriteItems.any((favoriteItem) => favoriteItem.title == item['Nombre']),
-      );
-    }).toList();
+    List<ListItem> itemsToShow;
 
     if (showFavorites) {
-      itemsToShow = itemsToShow.where((item) => item.isFavorite).toList();
+      final int startIndex = (currentPage - 1) * itemsPerPage;
+      final int endIndex = startIndex + itemsPerPage;
+      if (startIndex >= favoriteItems.length) {
+        itemsToShow = [];
+      } else {
+        itemsToShow = favoriteItems.sublist(startIndex, endIndex > favoriteItems.length ? favoriteItems.length : endIndex);
+      }
+    } else {
+      final int startIndex = (currentPage - 1) * itemsPerPage;
+      final int endIndex = startIndex + itemsPerPage;
+      itemsToShow = allData.sublist(startIndex, endIndex > allData.length ? allData.length : endIndex).map((item) {
+        return ListItem(
+          title: item['Nombre'] ?? '',
+          subtitle: item['Direccion']?.toString() ?? '',
+          isFavorite: favoriteItems.any((favoriteItem) => favoriteItem.title == item['Nombre']),
+        );
+      }).toList();
     }
 
     return itemsToShow;
@@ -84,20 +93,25 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
       final index = allData.indexOf(item);
       if (index != -1) {
-        allData[index].isFavorite = item.isFavorite;
+        allData[index]['isFavorite'] = item.isFavorite;
       }
 
       if (item.isFavorite) {
-        favoriteItems.add(item);
+        if (!favoriteItems.contains(item)) {
+          favoriteItems.add(item);
+        }
       } else {
         favoriteItems.removeWhere((favoriteItem) => favoriteItem.title == item.title);
       }
     });
   }
 
+  int getTotalPages() {
+    return showFavorites ? (favoriteItems.length / itemsPerPage).ceil() : (allData.length / itemsPerPage).ceil();
+  }
 
   void nextPage() {
-    final int totalPages = (allData.length / itemsPerPage).ceil();
+    final int totalPages = getTotalPages();
     if (currentPage < totalPages) {
       setState(() {
         currentPage++;
@@ -114,22 +128,37 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
   }
 
   void navigateToDetalleCentro(ListItem item) {
-    setState(() {
-      item.isFavorite = !item.isFavorite;
-      if (item.isFavorite) {
-        favoriteItems.add(item);
-      } else {
-        favoriteItems.remove(item);
-      }
-    });
-
-    // Navega a la pantalla de detalle del centro
-    // ...
+    final centro = allData.firstWhere((element) => element['Nombre'] == item.title);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Opcion4Detalles(centro: centro,),
+      ),
+    );
   }
 
-  @override
+  void _navigateToMapScreen() {
+    setState(() {
+      isMapLoading = true;
+    });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Mapa(centros: allData),
+      ),
+    ).then((_) {
+      setState(() {
+        isMapLoading = false;
+      });
+    });
+  }
+
+
+
+
   Widget build(BuildContext context) {
-    final int totalPages = (allData.length / itemsPerPage).ceil();
+    final int totalPages = getTotalPages();
 
     return Scaffold(
       appBar: AppBar(
@@ -142,8 +171,13 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
             onPressed: () {
               setState(() {
                 showFavorites = !showFavorites;
+                currentPage = 1; // Reiniciar la página cuando se cambia el filtro
               });
             },
+          ),
+          IconButton(
+            icon: Icon(Icons.map),
+            onPressed: isMapLoading ? null : _navigateToMapScreen,
           ),
         ],
       ),
@@ -151,8 +185,11 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
         children: [
           SizedBox(height: 10),
           Expanded(
-            child: allData.isNotEmpty
-                ? GridView.count(
+            child: isLoading
+                ? Center(
+              child: CircularProgressIndicator(),
+            )
+                : GridView.count(
               crossAxisCount: 1,
               childAspectRatio: 4,
               children: getCurrentPageData().map((item) {
@@ -178,9 +215,6 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                   ),
                 );
               }).toList(),
-            )
-                : Center(
-              child: CircularProgressIndicator(),
             ),
           ),
           Row(
