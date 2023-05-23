@@ -1,12 +1,9 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
 import 'package:app_tfg/screens/opcion2_output.dart';
 import 'package:app_tfg/screens/GlobalVariable.dart';
-
-
+import 'package:google_fonts/google_fonts.dart';
 
 
 class Opcion2_4Test extends StatefulWidget {
@@ -30,7 +27,7 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
   List<String> items = [
     'Brutaldad',
     'Tristeza',
-    'Recuperación de enfermedad',
+    'En recuperación (enfermedad)',
     'Historial de enfermedades',
     'Víctima de maltrato',
     'Suelta pelo'
@@ -70,7 +67,7 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Test de compatibilidad'),
+        title: Text('Test de compatibilidad',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: Padding(
@@ -79,17 +76,14 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
 
-            SizedBox(height: 16.0),
-            const Text('PREGUNTA 10', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 10.0),),
-            const Text('Haga un ranking en función de los aspectos negativos que'
-                ' más rechazo le generen hacia un animal. Pulse las flechas para desplazar los ítems.'
-              , style: TextStyle(
-                  fontSize: 12.5),),
-
             SizedBox(height: 10.0),
 
+            Text('10. Haga un ranking en función de los aspectos negativos que'
+                ' más rechazo le generen hacia un animal. Pulse las flechas para desplazar los ítems.',
+              style: GoogleFonts.montserrat(fontSize: 12.5),
+            ),
+
+            SizedBox(height: 10.0),
 
             ListView.builder(
               shrinkWrap: true,
@@ -109,12 +103,14 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
                         backgroundColor: Colors.grey[600], // Color de fondo más oscuro
                         child: Text(
                           rankNumber.toString(),
-                          style: TextStyle(fontSize: 12.0,color: Colors.white),
+                          style: GoogleFonts.montserrat(
+                              fontSize: 14.0,color: Colors.white),
                         ),
                       ),
                       title: Text(
                         items[index],
-                        style: TextStyle(fontSize: 13.0),
+                        style: GoogleFonts.montserrat(
+                            fontSize: 13.0),
                       ),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -172,11 +168,7 @@ class _Opcion2_4TestState extends State<Opcion2_4Test> {
                 ),
                 child: Text(
                   'Siguiente',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0,
-                    color: Colors.white
-                  ),
+                  style: GoogleFonts.montserrat(fontSize: 16),
                 ),
               ),
             ),

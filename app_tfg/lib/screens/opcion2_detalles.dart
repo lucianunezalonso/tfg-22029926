@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:app_tfg/screens/GlobalVariable.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class Opcion2Detalles extends StatelessWidget {
@@ -107,7 +108,7 @@ class Opcion2Detalles extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.black,
-              title: Text('Detalles del Animal'),
+              title: Text('Detalles del Animal',style: GoogleFonts.montserrat(),),
               centerTitle: true,
             ),
             body: Column(
@@ -130,12 +131,13 @@ class Opcion2Detalles extends StatelessWidget {
                         SizedBox(height: 10),
                         Text(
                           '${animal['Nombre'] ?? ''}',
-                          style: TextStyle(fontSize: 30),
+                          style: GoogleFonts.montserrat(fontSize: 30,
+                              fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 10),
                         Text(
                           '${animal['Raza']?.toString() ?? ''}',
-                          style: TextStyle(fontSize: 16),
+                          style: GoogleFonts.montserrat(fontSize: 16),
                         ),
                         SizedBox(height: 18),
                         Row(
@@ -164,7 +166,8 @@ class Opcion2Detalles extends StatelessWidget {
                                   SizedBox(width: 10),
                                   Text(
                                     '${animal['Sexo'] ?? ''}',
-                                    style: TextStyle(fontSize: 16, color: Colors.black),
+                                    style: GoogleFonts.montserrat(fontSize: 18,
+                                        color: Colors.black),
                                   ),
                                 ],
                               ),
@@ -187,7 +190,7 @@ class Opcion2Detalles extends StatelessWidget {
                                   SizedBox(width: 10),
                                   Text(
                                     '${animal['Edad'] ?? ''}',
-                                    style: TextStyle(fontSize: 16, color: Colors.black),
+                                    style: GoogleFonts.montserrat(fontSize: 18,color: Colors.black),
                                   ),
                                 ],
                               ),
@@ -197,14 +200,13 @@ class Opcion2Detalles extends StatelessWidget {
                         SizedBox(height: 20),
                         Text(
                           'Está en...',
-                          style: TextStyle(fontSize: 16),
+                          style: GoogleFonts.montserrat(fontSize: 16),
                         ),
-                        SizedBox(height: 7),
+                        SizedBox(height: 8),
                         Text(
                           '$nombreCentro (${comunidadAutonoma})',
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          style: GoogleFonts.montserrat(fontSize: 16,color: Colors.black),
                         ),
-
                       ],
                     ),
                   ),
@@ -214,7 +216,9 @@ class Opcion2Detalles extends StatelessWidget {
           );
         } else if (snapshot.hasError) {
           return Center(
-            child: Text('Error al cargar los datos: ${snapshot.error}'),
+            child: Text('Error al cargar los datos: ${snapshot.error}',
+              style: GoogleFonts.montserrat(),
+            ),
           );
         } else {
           return Center(

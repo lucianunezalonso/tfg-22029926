@@ -36,7 +36,8 @@ class _MapaState extends State<Mapa> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text('Mapa'),
+          title: Text('Mapa',
+            style: GoogleFonts.montserrat(),),
         ),
         body: FlutterMap(
           options: MapOptions(
@@ -60,7 +61,7 @@ class _MapaState extends State<Mapa> {
                   height: 40.0,
                   point: LatLng(centro['Latitud'], centro['Longitud']),
                   builder: (ctx) => Container(
-                    child: Icon(Icons.location_on, color: Colors.black),
+                    child: Icon(Icons.location_on, color: Colors.black.withOpacity(0.3)),
                   ),
                 ),
               ).toList(),
@@ -134,10 +135,19 @@ class _MapaState extends State<Mapa> {
                             height: 100, // Alto personalizado
                             child: Column(
                               children: [
-                                Text('No hay centros dentro del área seleccionado'),
+                                Text('No hay centros dentro del área seleccionado',
+                                style: GoogleFonts.montserrat(),),
                                 SizedBox(height: 10),
                                 TextButton(
-                                  child: Text('Aceptar'),
+                                  child: Text(
+                                    'Aceptar',
+                                    style: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF6E896A),
+                                        fontSize: 17
+                                    ),
+                                  ),
+
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
@@ -162,10 +172,19 @@ class _MapaState extends State<Mapa> {
                           height: 90, // Alto personalizado
                           child: Column(
                             children: [
-                              Text(' Seleccione el área deseada'),
+                              Text(' Seleccione el área deseada',
+                            style: GoogleFonts.montserrat(),),
                               SizedBox(height: 10),
                               TextButton(
-                                child: Text('Aceptar'),
+                                child: Text(
+                                  'Aceptar',
+                                  style: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF6E896A),
+                                      fontSize: 17
+                                  ),
+                                ),
+
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },

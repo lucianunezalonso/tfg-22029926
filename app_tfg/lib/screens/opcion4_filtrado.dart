@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:app_tfg/screens/GlobalVariable.dart';
 import 'package:app_tfg/screens/opcion4_detalles.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ListItem {
   String title;
@@ -97,7 +98,7 @@ class _Opcion4FiltradoState extends State<Opcion4Filtrado> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Listado de centros filtrados'),
+        title: Text('Listado de centros filtrados',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: isLoading
@@ -118,9 +119,8 @@ class _Opcion4FiltradoState extends State<Opcion4Filtrado> {
                     margin: EdgeInsets.all(8),
                     color: Colors.grey[300],
                     child: ListTile(
-                      title: Text(item.title),
-                      subtitle: Text(item.subtitle),
-
+                      title: Text(item.title,style: GoogleFonts.montserrat(),),
+                      subtitle: Text(item.subtitle,style: GoogleFonts.montserrat(),),
                     ),
                   ),
                 );
@@ -137,9 +137,7 @@ class _Opcion4FiltradoState extends State<Opcion4Filtrado> {
               ),
               Text(
                 'Página $currentPage de $totalPages',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                  style: GoogleFonts.montserrat(),
               ),
               IconButton(
                 icon: Icon(Icons.arrow_forward),

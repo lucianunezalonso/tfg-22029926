@@ -1,8 +1,5 @@
-import 'package:app_tfg/screens/opcion1_test.dart';
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-
-
+import 'package:google_fonts/google_fonts.dart';
 
 class Opcion1Output extends StatelessWidget {
   final List<dynamic> resultData;
@@ -16,7 +13,7 @@ class Opcion1Output extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Centros recomendados'),
+        title: Text('Centros recomendados',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: Center(
@@ -27,8 +24,8 @@ class Opcion1Output extends StatelessWidget {
             final itemIndex = index + 1; // Obtener el número de índice real
 
             return ListTile(
-              title: Text('$itemIndex. ${item['Nombre'] ?? ''}'),
-              subtitle: Text(item['CCAA']?.toString() ?? ''),
+              title: Text('$itemIndex. ${item['Nombre'] ?? ''}',style: GoogleFonts.montserrat(fontWeight: FontWeight.bold),),
+              subtitle: Text(item['CCAA']?.toString() ?? '',style: GoogleFonts.montserrat(),),
             );
           },
         ),

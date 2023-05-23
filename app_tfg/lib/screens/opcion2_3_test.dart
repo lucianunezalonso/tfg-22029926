@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../screens/opcion2_4_test.dart';
 
 
@@ -65,8 +66,7 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Test de compatibilidad'),
-        centerTitle: true,
+        title: Text('Test de compatibilidad',style: GoogleFonts.montserrat(),),        centerTitle: true,
       ),
       body: Padding(
         padding: EdgeInsets.all(19.0),
@@ -74,14 +74,12 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
 
-            SizedBox(height: 16.0),
-            const Text('PREGUNTA 9', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 10.0),),
-            const Text('Haga un ranking en función de los aspectos positivos que'
+            SizedBox(height: 10.0),
+
+            Text('9. Haga un ranking en función de los aspectos positivos que'
                 ' más valore en un animal. Pulse las flechas para desplazar los ítems.'
-              , style: TextStyle(
-                  fontSize: 12.5),),
+              , style: GoogleFonts.montserrat(fontSize: 12.5),
+            ),
 
             SizedBox(height: 10.0),
 
@@ -104,13 +102,16 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
                         backgroundColor: Colors.grey[600], // Color de fondo más oscuro
                         child: Text(
                           rankNumber.toString(),
-                          style: TextStyle(fontSize: 12.0,color: Colors.white),
+                          style: GoogleFonts.montserrat(
+                               fontSize: 14.0,color: Colors.white),
                         ),
                       ),
                       title: Text(
                         items[index],
-                        style: TextStyle(fontSize: 13.0),
+                        style: GoogleFonts.montserrat(
+                            fontSize: 13.0),
                       ),
+
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -170,22 +171,13 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
                 ),
                 child: Text(
                   'Siguiente',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0,
-                      color: Colors.white
-                  ),
+                  style: GoogleFonts.montserrat(fontSize: 16),
                 ),
               ),
             ),
-
-
           ],
         ),
-
       ),
-
-
     );
   }
 }

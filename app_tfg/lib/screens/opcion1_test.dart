@@ -4,11 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:app_tfg/screens/opcion1_output.dart';
 import 'package:app_tfg/screens/GlobalVariable.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
-
-
-// CAMBIAR LAS IP AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 class Opcion1Test extends StatefulWidget {
   @override
@@ -73,7 +71,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
     return Scaffold(
         appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Características del animal'),
+        title: Text('Características del animal',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
 
@@ -91,9 +89,10 @@ class _Opcion1TestState extends State<Opcion1Test> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 //-------------------------------------------------------------- ESPECIE
-                SizedBox(height: 12.0),
-                const Text('Especie',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),),
+                SizedBox(height: 4.0),
+                 Text('Especie'
+                    ,style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15.0),
+                  ),
 
                   SizedBox(
                     height: 38,
@@ -109,8 +108,9 @@ class _Opcion1TestState extends State<Opcion1Test> {
                       items: <String>['Canina', 'Felina'].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value,
-                          style: TextStyle(fontSize: 13.0),),
+                          child: Text(value
+                              ,style: GoogleFonts.montserrat(fontSize: 13.0),
+                          ),
                         );
                       }).toList(),
                     ),
@@ -119,8 +119,8 @@ class _Opcion1TestState extends State<Opcion1Test> {
                       SizedBox(height: 13.0),
 
                 //---------------------------------------------------------------- RAZA
-                const Text('Raza',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),),
+                 Text('Raza'
+                     ,style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15.0),),
                 SizedBox(
                   height: 38,
                   child: DropdownButtonFormField(
@@ -135,14 +135,14 @@ class _Opcion1TestState extends State<Opcion1Test> {
                         return DropdownMenuItem<String>(
                           value: value.toLowerCase(),
                           child: Text(value,
-                            style: TextStyle(fontSize: 13.0),),
+                              style: GoogleFonts.montserrat(fontSize: 13.0),),
                         );
                       }).toList()
                           : _razasFelinas.map((String value) {
                         return DropdownMenuItem<String>(
                           value: value.toLowerCase(),
                           child: Text(value,
-                            style: TextStyle(fontSize: 13.0),),
+                            style: GoogleFonts.montserrat(fontSize: 13.0),),
                         );
                       }).toList(),
                     ),
@@ -151,8 +151,8 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
                 SizedBox(height: 12.0),
               //---------------------------------------------------------------- TAMAÑO
-                const Text('Tamaño',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),),
+                Text('Tamaño'
+                    ,style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15.0),),
 
                   SizedBox(
                     height: 38,
@@ -168,14 +168,14 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           return DropdownMenuItem<String>(
                             value: value.toLowerCase(),
                             child: Text(value,
-                              style: TextStyle(fontSize: 13.0),),
+                              style: GoogleFonts.montserrat(fontSize: 13.0),),
                           );
                         }).toList()
                             : <String>['Pequeño'].map((String value) {
                           return DropdownMenuItem<String>(
                             value: value.toLowerCase(),
                             child: Text(value,
-                              style: TextStyle(fontSize: 13.0),),
+                              style: GoogleFonts.montserrat(fontSize: 13.0),),
                           );
                         }).toList(),
                       ),
@@ -184,16 +184,15 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
 
               //---------------------------------------------------------------- SEXO
-                const Text('Sexo',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0),),
+                Text('Sexo'
+                    ,style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15.0),),
+
                 Row(
                   children: [
                     Flexible(
                       child: RadioListTile(
                         title: Text('Macho',
-                          style: TextStyle(fontSize: 13.0),),
+                  style: GoogleFonts.montserrat(fontSize: 13.0),),
                         value: 'macho',
                         groupValue: _sexo,
                         onChanged: (value) {
@@ -206,7 +205,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
                     Flexible(
                       child: RadioListTile(
                         title: Text('Hembra',
-                          style: TextStyle(fontSize: 13.0),),
+                          style: GoogleFonts.montserrat(fontSize: 13.0),),
                         value: 'hembra',
                         groupValue: _sexo,
                         onChanged: (value) {
@@ -221,10 +220,9 @@ class _Opcion1TestState extends State<Opcion1Test> {
 
 
               //---------------------------------------------------------------- EDAD
-                Text('Edad',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0),),
+                Text('Edad'
+                    ,style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15.0),),
+
                 SizedBox(
                 height: 38,
                 child:
@@ -237,6 +235,8 @@ class _Opcion1TestState extends State<Opcion1Test> {
                         decoration: InputDecoration(
                           labelText: _years_edad == 0 ? 'Años' : '',
                           hintText: '0-12',
+                          labelStyle: GoogleFonts.montserrat(),
+
                         ),
                         validator: (value) {
                           final years = int.tryParse(value ?? '');
@@ -258,6 +258,7 @@ class _Opcion1TestState extends State<Opcion1Test> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           labelText: _months_edad == 0 ? 'Meses' : '',
+                          labelStyle: GoogleFonts.montserrat(),
                           hintText: '0-11',
                         ),
                         validator: (value) {
@@ -281,13 +282,9 @@ class _Opcion1TestState extends State<Opcion1Test> {
                 SizedBox(height: 13.0),
 
               //---------------------------------------------------------------- TIEMPO
-                const Text(
-                  'Tiempo en estado de adopción',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.0,
-                  ),
-                ),
+                Text(
+                  'Tiempo en adopción',
+                    style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15.0),),
                 SizedBox(
                   height: 38,
                   child:
@@ -300,6 +297,8 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           decoration: InputDecoration(
                             labelText: _years_tiempo == 0 ? 'Años' : '',
                             hintText: '0-12',
+                            labelStyle: GoogleFonts.montserrat(),
+
                           ),
                           validator: (value) {
                             final years = int.tryParse(value ?? '');
@@ -322,6 +321,8 @@ class _Opcion1TestState extends State<Opcion1Test> {
                           decoration: InputDecoration(
                             labelText: _months_tiempo == 0 ? 'Meses' : '',
                             hintText: '0-11',
+                            labelStyle: GoogleFonts.montserrat(),
+
                           ),
                           validator: (value) {
                             final months = int.tryParse(value ?? '');
@@ -343,10 +344,8 @@ class _Opcion1TestState extends State<Opcion1Test> {
                 ),
               //---------------------------------------------------------------- MICROCHIP
                 CheckboxListTile(
-                  title: const Text('Microchip',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0),),
+                  title: Text('Microchip',
+                    style: GoogleFonts.montserrat(fontWeight: FontWeight.bold, fontSize: 15.0),),
                   value: _microchip,
                   onChanged: (value) {
                     setState(() {
@@ -391,16 +390,14 @@ class _Opcion1TestState extends State<Opcion1Test> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      fixedSize: Size(90, 40),
+                      fixedSize: Size(90, 10),
                       backgroundColor: Color(0xFFEE892F)
                     ),
                     child: Text('Enviar',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0),),
+                      style: GoogleFonts.montserrat( fontSize: 18.0),),
+
                   ),
                 ),
-
               ],
             ),
           ),
@@ -447,13 +444,4 @@ class _Opcion1TestState extends State<Opcion1Test> {
       throw Exception('Error de conexión: $e');
     }
   }
-
-
 }
-
-
-
-
-
-
-

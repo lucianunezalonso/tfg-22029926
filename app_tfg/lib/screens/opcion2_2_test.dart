@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../screens/opcion2_3_test.dart';
 import 'dart:convert';
 
@@ -33,7 +34,7 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Test de compatibilidad'),
+        title: Text('Test de compatibilidad',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: Padding(
@@ -45,19 +46,18 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
             // SEXTA PREGUNTA
 
             SizedBox(height: 16.0),
-            const Text('PREGUNTA 6', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 10.0),),
-            const Text('¿Tiene o estaría dispuesto a tener licencia PPP?'
-              , style: TextStyle(
-                fontSize: 12.5),),
+            Text('6. ¿Tiene o estaría dispuesto a tener licencia PPP?',
+                style: GoogleFonts.montserrat(fontSize: 12.5),
+            ),
+
 
             Row(
               children: [
                 Flexible(
                   child: RadioListTile(
-                    title: const Text('SÍ',
-                      style: TextStyle(fontSize: 10.0),),
+                    title: Text('SÍ',
+                      style: GoogleFonts.montserrat(fontSize: 12),
+                    ),
                     value: 'si',
                     groupValue: _selectedValue6,
                     onChanged: (value) {
@@ -70,7 +70,8 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
                 Flexible(
                   child: RadioListTile(
                     title: Text('NO',
-                      style: TextStyle(fontSize: 10.0),),
+                      style: GoogleFonts.montserrat(fontSize: 12),
+                      ),
                     value: 'no',
                     groupValue: _selectedValue6,
                     onChanged: (value) {
@@ -86,20 +87,17 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
 
 
             // SÉPTIMA PREGUNTA
-
-            Text('PREGUNTA 7', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 10.0),),
-            Text('¿Preferiría un animal cariñoso y que busque '
-                'afecto constantemente o uno que sea más independiente?', style: TextStyle(
-                fontSize: 12.5),),
+            Text('7. ¿Preferiría un animal cariñoso y que busque '
+                'afecto constantemente o uno que sea más independiente?',
+              style: GoogleFonts.montserrat(fontSize: 12.5),
+              ),
 
             Row(
               children: [
                 Flexible(
                   child: RadioListTile(
                     title: Text('CARIÑOSO',
-                      style: TextStyle(fontSize: 10.0),),
+                      style: GoogleFonts.montserrat(fontSize: 11),),
                     value: 'cariñoso',
                     groupValue: _selectedValue7,
                     onChanged: (value) {
@@ -112,7 +110,8 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
                 Flexible(
                   child: RadioListTile(
                     title: Text('INDEPENDIENTE',
-                      style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 11),
+                        ),
                     value: 'independiente',
                     groupValue: _selectedValue7,
                     onChanged: (value) {
@@ -126,19 +125,17 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
             ),
 
             // OCTAVA PREGUNTA
-
-            Text('PREGUNTA 8', style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 10.0),),
-            Text('¿Tiene actualmente o tendría pensado tener en un futuro otros animales?'
-              , style: TextStyle(
-                  fontSize: 12.5),),
+            Text('8. ¿Tiene actualmente o tendría pensado tener en un futuro otros animales?'
+              ,style: GoogleFonts.montserrat(fontSize: 12.5),
+            ),
 
             Row(
               children: [
                 Flexible(
                   child: RadioListTile(
-                    title: const Text('SÍ', style: TextStyle(fontSize: 10.0),),
+                    title: Text('SÍ',
+                      style: GoogleFonts.montserrat(fontSize: 12),
+                      ),
                     value: 'si',
                     groupValue: _selectedValue8,
                     onChanged: (value) {
@@ -150,7 +147,9 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
                 ),
                 Flexible(
                   child: RadioListTile(
-                    title: Text('NO', style: TextStyle(fontSize: 10.0),),
+                    title: Text('NO',
+                      style: GoogleFonts.montserrat(fontSize: 12),
+                      ),
                     value: 'no',
                     groupValue: _selectedValue8,
                     onChanged: (value) {
@@ -166,8 +165,8 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
             SizedBox(height: 7.0),
 
             Text('En caso afirmativo, ¿puede especificar más?'
-              , style: TextStyle(
-                  fontSize: 12.5),),
+              , style: GoogleFonts.montserrat(fontSize: 12.5),
+            ),
             DropdownButtonFormField(
               value: _selectedOption,
               onChanged: (value) {
@@ -180,7 +179,7 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
                 return DropdownMenuItem<String>(
                   value: value.toLowerCase(),
                   child: Text(value,
-                    style: TextStyle(fontSize: 13.0),),
+                    style: GoogleFonts.montserrat(fontSize: 13),),
                 );
               }).toList()
                   : <String>[''].map((String value) {
@@ -192,7 +191,6 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
               }).toList(),
             ),
             SizedBox(height: 13.0),
-
 
 
             Center(
@@ -226,22 +224,13 @@ class _Opcion2_2TestState extends State<Opcion2_2Test>  {
               ),
                 child: Text(
                   'Siguiente',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0,
-                      color: Colors.white
-                  ),
+                  style: GoogleFonts.montserrat(fontSize: 16),
                 ),
               ),
             ),
-
-
           ],
         ),
-
       ),
-
-
     );
   }
 }

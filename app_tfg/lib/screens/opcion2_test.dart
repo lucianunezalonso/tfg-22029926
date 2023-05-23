@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../screens/opcion2_2_test.dart';
 
 class Opcion2Test extends StatefulWidget {
@@ -23,7 +24,7 @@ class _Opcion2TestState extends State<Opcion2Test> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Test de compatibilidad'),
+        title: Text('Test de compatibilidad',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: Padding(
@@ -34,22 +35,20 @@ class _Opcion2TestState extends State<Opcion2Test> {
 
               // PRIMERA PREGUNTA
 
-              SizedBox(height: 16.0),
-              const Text('PREGUNTA 1',style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10.0),),
-              const Text('¿Incluirá a su mascota en actividades '
+              SizedBox(height: 10.0),
+              Text('1. ¿Incluirá a su mascota en actividades '
                   'que supongan salir de casa periódicamente? (playa, vacaciones,'
-                  ' actividades de fin de semana…)',style: TextStyle(
-                  fontSize: 12.5),),
+                  ' actividades de fin de semana…)',
+                style: GoogleFonts.montserrat(fontSize: 12.5),
+              ),
 
               Row(
                 children: [
                   Flexible(
                     child: RadioListTile(
-                      title: const Text(
+                      title: Text(
                         'SÍ',
-                        style: TextStyle(fontSize: 10.0),
+                        style: GoogleFonts.montserrat(fontSize: 12),
                       ),
                       value: 'si',
                       groupValue: _selectedValue1,
@@ -64,7 +63,7 @@ class _Opcion2TestState extends State<Opcion2Test> {
                     child: RadioListTile(
                       title: Text(
                         'NO',
-                        style: TextStyle(fontSize: 10.0),
+                        style: GoogleFonts.montserrat(fontSize: 12),
                       ),
                       value: 'no',
                       groupValue: _selectedValue1,
@@ -79,23 +78,22 @@ class _Opcion2TestState extends State<Opcion2Test> {
               ),
 
 
-
               // SEGUNDA PREGUNTA
 
-              Text('PREGUNTA 2',style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10.0),),
-              Text('¿Su animal de compañía se relacionará generalmente'
+
+              Text('2. ¿Su animal de compañía se relacionará generalmente'
                   ' con su entorno y círculo de amistades o pasará más tiempo '
-                  'en su hogar?',style: TextStyle(
-                  fontSize: 12.5),),
+                  'en su hogar?',
+                style: GoogleFonts.montserrat(fontSize: 12.5),
+              ),
 
               Row(
                 children: [
                   Flexible(
                     child: RadioListTile(
                       title: Text('ENTORNO',
-                        style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 12),
+                      ),
                       value: 'entorno',
                       groupValue: _selectedValue2,
                       onChanged: (value) {
@@ -106,7 +104,8 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   Flexible(
                     child: RadioListTile(
                       title: Text('HOGAR',
-                        style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 12),
+                      ),
                       value: 'hogar',
                       groupValue: _selectedValue2,
                       onChanged: (value) {
@@ -119,20 +118,18 @@ class _Opcion2TestState extends State<Opcion2Test> {
 
               // TERCERA PREGUNTA
 
-              Text('PREGUNTA 3',style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10.0),),
-              Text('¿Cuánto tiempo pasará en casa o junto con el animal,'
+              Text('3. ¿Cuánto tiempo pasará en casa o junto con el animal,'
                   ' la mayor parte del día o periodos cortos en horarios intermitentes?'
-                ,style: TextStyle(
-                  fontSize: 12.5),),
+                , style: GoogleFonts.montserrat(fontSize: 12.5),
+              ),
 
               Row(
                 children: [
                   Flexible(
                     child: RadioListTile(
                       title: Text('LA MAYOR PARTE DEL DÍA',
-                        style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 10),
+                        ),
                       value: 'dia',
                       groupValue: _selectedValue3,
                       onChanged: (value) {
@@ -143,7 +140,8 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   Flexible(
                     child: RadioListTile(
                       title: Text('PERIODOS CORTOS',
-                        style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 10),
+                      ),
                       value: 'periodos',
                       groupValue: _selectedValue3,
                       onChanged: (value) {
@@ -156,19 +154,17 @@ class _Opcion2TestState extends State<Opcion2Test> {
 
               // CUARTA PREGUNTA
 
-              Text('PREGUNTA 4',style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10.0),),
-              Text('¿Convive con niños o tiene pensado hacerlo en un futuro?'
-                ,style: TextStyle(
-                    fontSize: 12.5),),
+              Text('4. ¿Convive con niños o tiene pensado hacerlo en un futuro?'
+                ,style: GoogleFonts.montserrat(fontSize: 12.5),
+              ),
 
               Row(
                 children: [
                   Flexible(
                     child: RadioListTile(
                       title: Text('SÍ',
-                        style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 12.0),
+                        ),
                       value: 'si',
                       groupValue: _selectedValue4,
                       onChanged: (value) {
@@ -179,7 +175,7 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   Flexible(
                     child: RadioListTile(
                       title: Text('NO',
-                        style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 12),),
                       value: 'no',
                       groupValue: _selectedValue4,
                       onChanged: (value) {
@@ -192,20 +188,17 @@ class _Opcion2TestState extends State<Opcion2Test> {
 
               // QUINTA PREGUNTA
 
-              Text('PREGUNTA 5',style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10.0),),
-              Text('¿Su residencia cuenta con alguna zona en la que su'
+              Text('5. ¿Su residencia cuenta con alguna zona en la que su'
                   ' mascota se pueda mover libremente? (jardín, patio, finca…)'
-                ,style: TextStyle(
-                    fontSize: 12.5),),
+                ,style: GoogleFonts.montserrat(fontSize: 12.5),
+              ),
 
               Row(
                 children: [
                   Flexible(
                     child: RadioListTile(
                       title: Text('SÍ',
-                        style: TextStyle(fontSize: 10.0),),
+                style: GoogleFonts.montserrat(fontSize: 12),),
                       value: 'si',
                       groupValue: _selectedValue5,
                       onChanged: (value) {
@@ -216,7 +209,7 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   Flexible(
                     child: RadioListTile(
                       title: Text('NO',
-                        style: TextStyle(fontSize: 10.0),),
+                        style: GoogleFonts.montserrat(fontSize: 12),),
                       value: 'no',
                       groupValue: _selectedValue5,
                       onChanged: (value) {
@@ -257,11 +250,7 @@ class _Opcion2TestState extends State<Opcion2Test> {
                   ),
                   child: Text(
                     'Siguiente',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0,
-                      color: Colors.white
-                    ),
+                    style: GoogleFonts.montserrat(fontSize: 16),
                   ),
                 ),
               ),

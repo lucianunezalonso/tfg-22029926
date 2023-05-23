@@ -57,7 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
       home: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('AdoptionMovement'),
+        title: Text('AdoptionMovement',
+          style: GoogleFonts.montserrat(),),
 
         centerTitle: true,
       ),
@@ -68,21 +69,25 @@ class _HomeScreenState extends State<HomeScreen> {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: new Text('Estás seguro?'),
-                content: new Text('Quieres cerrar sesión en la app'),
+                title: new Text('Estás seguro?',
+                  style: GoogleFonts.montserrat(),),
+                content: new Text('Quieres cerrar sesión en la app',
+                  style: GoogleFonts.montserrat(),),
                 actionsAlignment: MainAxisAlignment.spaceBetween,
                 actions: [
                   TextButton(
                     onPressed: () {
                       Logout();
                     },
-                    child: const Text('Sí'),
+                    child: Text('Sí',
+                      style: GoogleFonts.montserrat(),),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context, false);
                     },
-                    child: const Text('No'),
+                    child: Text('No',
+                      style: GoogleFonts.montserrat(),),
                   ),
                 ],
               );
@@ -93,21 +98,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Center(
               child: Column(
-
-
 
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     '¡Hola ${_currentUser.displayName}!',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 22.0),
+                    style: GoogleFonts.montserrat(
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 15.0),
                   Text('¿Qué quieres hacer hoy?',
-                    style: TextStyle(fontSize: 17.0),),
+                    style: GoogleFonts.montserrat(fontSize: 17.0),
+                  ),
                   SizedBox(height: 20.0),
                   ElevatedButton.icon(
                     onPressed: () {
@@ -122,15 +129,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: TextSpan(
                         style: TextStyle(fontSize: 20),
                         children: [
-                          TextSpan(text: '¿Necesitas que un animal sea adoptado?\n'),
+                          TextSpan(text: '¿Necesitas que un animal sea adoptado?\n',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                            ),),
                           TextSpan(text: '\n', style: GoogleFonts.montserrat(
-                            fontStyle: FontStyle.italic,
                             fontSize: 6,
                           )
                           ),
                           TextSpan(text: 'Te recomendamos a donde llevarlo', style: GoogleFonts.montserrat(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 16,
+                            fontSize: 15,
                             )
                           ),
                         ],
@@ -161,15 +170,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: TextSpan(
                         style: TextStyle(fontSize: 20),
                         children: [
-                          TextSpan(text: 'Haz el test de compatibilidad\n'),
+                          TextSpan(text: 'Haz el test de compatibilidad\n',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                            ),),
                           TextSpan(text: '\n', style: GoogleFonts.montserrat(
-                            fontStyle: FontStyle.italic,
                             fontSize: 6,
                           )
                           ),
-                          TextSpan(text: 'Con los resultados sabrás qué animales se adaptarían mejor a ti', style: GoogleFonts.montserrat(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 16,
+                          TextSpan(text: 'Conoce los animales que mejor se adaptan a tí', style: GoogleFonts.montserrat(
+                            fontSize: 15,
                           )
                           ),
                         ],
@@ -202,7 +213,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(height: 20),
                                   Text(
                                     'Cargando...',
-                                    style: TextStyle(fontSize: 16),
+                                    style: GoogleFonts.montserrat(fontSize: 16)
+
                                   ),
                                 ],
                               ),
@@ -226,16 +238,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: TextSpan(
                         style: TextStyle(fontSize: 20),
                         children: [
-                          TextSpan(text: 'Listado de centros\n'),
+                          TextSpan(text: 'Listado de centros\n',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                            ),),
                           TextSpan(text: '\n', style: GoogleFonts.montserrat(
-                            fontStyle: FontStyle.italic,
                             fontSize: 6,
                           )
                           ),
                           TextSpan(
                             text: 'Información organizada y accesible', style: GoogleFonts.montserrat(
-                            fontStyle: FontStyle.italic,
-                            fontSize: 16,
+                            fontSize: 15,
                           )
                           ),
                         ],
@@ -264,8 +278,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    child: const Text('Cerrar sesión',
-                      style: TextStyle(fontSize: 18),),
+                    child:  Text('Cerrar sesión',
+                      style: GoogleFonts.montserrat(fontSize: 18),),
                     style:
                       ElevatedButton.styleFrom(
                         primary: Colors.black,

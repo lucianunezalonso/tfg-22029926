@@ -2,6 +2,7 @@ import 'package:app_tfg/screens/opcion1_test.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:app_tfg/screens/opcion2_detalles.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Opcion2Output extends StatefulWidget {
   final List<dynamic> resultData;
@@ -29,7 +30,7 @@ class _Opcion2OutputState extends State<Opcion2Output> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Animales recomendados'),
+        title: Text('Animales recomendados',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: Column(
@@ -61,8 +62,10 @@ class _Opcion2OutputState extends State<Opcion2Output> {
                     ),
                     margin: EdgeInsets.all(7.0),
                     child: ListTile(
-                      title: Text('$itemIndex. ${item['Nombre'] ?? ''}'),
-                      subtitle: Text(item['Raza']?.toString() ?? ''),
+                      title: Text('$itemIndex. ${item['Nombre'] ?? ''}'
+                          ,style: GoogleFonts.montserrat(),),
+                      subtitle: Text(item['Raza']?.toString() ?? ''
+                        ,style: GoogleFonts.montserrat(),),
                     ),
                   ),
                 );
@@ -82,7 +85,7 @@ class _Opcion2OutputState extends State<Opcion2Output> {
                 }
                     : null,
               ),
-              Text('${currentPage + 1}/$totalPages'),
+              Text('${currentPage + 1} / $totalPages',style: GoogleFonts.montserrat(),),
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: currentPage < totalPages - 1

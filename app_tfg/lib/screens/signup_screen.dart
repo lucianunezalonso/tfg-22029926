@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../screens/home_screen.dart';
 import '../helper/firebase_auth.dart';
 import '../helper/validator.dart';
@@ -36,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
-          title: Text('Crear cuenta'),
+          title: Text('Crear cuenta',style: GoogleFonts.montserrat(),),
           centerTitle: true,
         ),
         body: Padding(
@@ -63,6 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         decoration: InputDecoration(
                           hintText: "Nombre",
+                          hintStyle: GoogleFonts.montserrat(),
                           errorBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(6.0),
                             borderSide: BorderSide(
@@ -80,6 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         decoration: InputDecoration(
                           hintText: "Correo electrónico",
+                          hintStyle: GoogleFonts.montserrat(),
                           errorBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(6.0),
                             borderSide: BorderSide(
@@ -98,6 +101,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         decoration: InputDecoration(
                           hintText: "Contraseña",
+                          hintStyle: GoogleFonts.montserrat(),
                           errorBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(6.0),
                             borderSide: BorderSide(
@@ -150,9 +154,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               },
                               child: Text(
                                 'Regístrate',
-                                style: TextStyle(color: Colors.white,
-                                  fontSize: 17,),
-
+                                style: GoogleFonts.montserrat(color: Colors.white,
+                                  fontSize: 17,)
                               ),
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(Colors.black),
@@ -168,9 +171,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("¿Ya tienes una cuenta? ",
-                          style: TextStyle(fontSize: 18)),
+                          style: GoogleFonts.montserrat(fontSize: 18,)
+                          ),
                           TextButton(
-                            child: Text("Iniciar sesión"),
+                            child: Text("Iniciar sesión", style: GoogleFonts.montserrat()),
                             style: TextButton.styleFrom(
                               textStyle: TextStyle(color: Colors.black, fontSize: 18),
 

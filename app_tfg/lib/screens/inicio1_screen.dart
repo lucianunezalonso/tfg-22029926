@@ -32,7 +32,8 @@ class _Inicio1ScreenState extends State<Inicio1Screen> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
-            title: Text('AdoptionMovement'),
+            title: Text('AdoptionMovement',
+              style: GoogleFonts.montserrat(),),
             centerTitle: true,
           ),
           body: Container(
@@ -55,7 +56,7 @@ class _Inicio1ScreenState extends State<Inicio1Screen> {
                     ElevatedButton(
                       child: Text(
                         "Registrarse",
-                        style: TextStyle(fontSize: 18),
+                        style: GoogleFonts.montserrat(fontSize: 18),
                       ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(Colors.black),
@@ -73,8 +74,7 @@ class _Inicio1ScreenState extends State<Inicio1Screen> {
                     ElevatedButton(
                       child: Text(
                         "Iniciar sesión",
-                        style: TextStyle(fontSize: 18),
-                      ),
+                        style: GoogleFonts.montserrat(fontSize: 18),                      ),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(Colors.black),
                         padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 24, vertical: 5)), // Aumenta el relleno del botón
@@ -89,7 +89,6 @@ class _Inicio1ScreenState extends State<Inicio1Screen> {
                     ),
                   ],
                 ),
-
               ],
             ),
           ),

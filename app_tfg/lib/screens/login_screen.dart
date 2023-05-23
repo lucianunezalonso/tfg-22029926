@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
-            title: Text('Inicio sesión'),
+            title: Text('Inicio sesión',style: GoogleFonts.montserrat(),),
             centerTitle: true,
           ),
           body: FutureBuilder(
@@ -93,6 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               decoration: InputDecoration(
                                 hintText: "Correo electrónico",
+                                hintStyle: GoogleFonts.montserrat(),
                                 errorBorder: UnderlineInputBorder(
                                   borderRadius: BorderRadius.circular(6.0),
                                   borderSide: BorderSide(
@@ -111,6 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               decoration: InputDecoration(
                                 hintText: "Contraseña",
+                                hintStyle: GoogleFonts.montserrat(),
                                 errorBorder: UnderlineInputBorder(
                                   borderRadius: BorderRadius.circular(6.0),
                                   borderSide: BorderSide(
@@ -162,7 +164,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     },
                                     child: Text(
                                       'Iniciar sesión',
-                                      style: TextStyle(color: Colors.white),
+                                      style: GoogleFonts.montserrat(color: Colors.white,
+                                          fontSize: 18),
                                     ),
                                     style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty.all(Colors.black),

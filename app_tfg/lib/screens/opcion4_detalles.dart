@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:google_fonts/google_fonts.dart';
 
 class BarChartData {
   final String category;
@@ -80,7 +81,7 @@ class Opcion4Detalles extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Detalles del centro'),
+        title: Text('Detalles del centro',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: Padding(
@@ -90,19 +91,19 @@ class Opcion4Detalles extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '${centro['Nombre']}',
-                style: TextStyle(
-                  fontSize: 18.0, // Tamaño de fuente deseado
-                  fontWeight: FontWeight.bold, // Negrita
-                ),
+                '${centro['Nombre']}'
+              ,style: GoogleFonts.montserrat(fontSize: 18.0, // Tamaño de fuente deseado
+               fontWeight: FontWeight.bold,),
                 textAlign: TextAlign.center, // Centrar el texto
               ),
               SizedBox(height: 7.0),
-              Text('(${centro['Categoria']})'),
+              Text('(${centro['Categoria']})'
+                  ,style: GoogleFonts.montserrat(),),
               SizedBox(height: 20.0),
               Text(
                 '${centro['Direccion']}',
                 textAlign: TextAlign.center,
+                style: GoogleFonts.montserrat(),
               ),
               SizedBox(height: 20.0),
               chartWidget, // GRÁFICO
@@ -116,7 +117,7 @@ class Opcion4Detalles extends StatelessWidget {
                     color: Colors.green,
                   ),
                   SizedBox(width: 5.0),
-                  Text('Ocupación baja'),
+                  Text('Ocupación baja',style: GoogleFonts.montserrat(fontSize: 13),),
                   SizedBox(width: 20.0),
                   Container(
                     width: 10,
@@ -124,7 +125,7 @@ class Opcion4Detalles extends StatelessWidget {
                     color: Colors.yellow,
                   ),
                   SizedBox(width: 5.0),
-                  Text('Ocupación alta'),
+                  Text('Ocupación alta',style: GoogleFonts.montserrat(fontSize: 13),),
                   SizedBox(width: 20.0),
                   Container(
                     width: 10,
@@ -132,7 +133,7 @@ class Opcion4Detalles extends StatelessWidget {
                     color: Colors.red,
                   ),
                   SizedBox(width: 5.0),
-                  Text('Saturada'),
+                  Text('Saturada',style: GoogleFonts.montserrat(fontSize: 13),),
                 ],
               ),
 
@@ -162,8 +163,7 @@ class Opcion4Detalles extends StatelessWidget {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 '${centro['Telefono']}',
-                                style: TextStyle(fontSize: 12.0),
-                              ),
+                                style: GoogleFonts.montserrat(fontSize: 13),),
                             ),
                           ),
                         ],
@@ -184,8 +184,7 @@ class Opcion4Detalles extends StatelessWidget {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 '${centro['URL']}',
-                                style: TextStyle(fontSize: 12.0),
-                              ),
+                                style: GoogleFonts.montserrat(fontSize: 13),),
                             ),
                           ),
                         ],
@@ -206,7 +205,7 @@ class Opcion4Detalles extends StatelessWidget {
                               padding: EdgeInsets.all(8.0),
                               child: Text(
                                 '${centro['Facebook']}',
-                                style: TextStyle(fontSize: 12.0),
+                                style: GoogleFonts.montserrat(fontSize: 13),
                               ),
                             ),
                           ),
@@ -218,7 +217,6 @@ class Opcion4Detalles extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.0),
-
 
             ],
           ),

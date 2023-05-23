@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:app_tfg/screens/GlobalVariable.dart';
 import 'package:app_tfg/screens/mapa.dart';
 import 'package:app_tfg/screens/opcion4_detalles.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class ListItem {
@@ -208,10 +209,11 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Buscar por nombre'),
+          title: Text('Buscar por nombre',style: GoogleFonts.montserrat(),),
           content: TextField(
             decoration: InputDecoration(
-              labelText: 'Buscar por nombre',
+              labelText: 'Introduce el nombre del centro',
+              labelStyle: GoogleFonts.montserrat(fontSize: 13),
             ),
             onChanged: (value) {
               setState(() {
@@ -221,14 +223,14 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
           ),
           actions: [
             TextButton(
-              child: Text('Buscar'),
+              child: Text('Buscar',style: GoogleFonts.montserrat(),),
               onPressed: () {
                 applySearchFilter();
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Cancelar'),
+              child: Text('Cancelar',style: GoogleFonts.montserrat(),),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -281,7 +283,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Filtros'),
+          title: Text('Filtros',style: GoogleFonts.montserrat(),),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -291,7 +293,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                 items: autonomousCommunities.map((ccaa) {
                   return DropdownMenuItem(
                     value: ccaa,
-                    child: Text(ccaa),
+                    child: Text(ccaa,style: GoogleFonts.montserrat(),),
                   );
                 }).toList(),
                 onChanged: (value) {
@@ -301,6 +303,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                 },
                 decoration: InputDecoration(
                   labelText: 'Comunidad Autónoma',
+                  labelStyle:  GoogleFonts.montserrat(),
                 ),
               ),
               // FILTRO DE CATEGORÍA
@@ -309,7 +312,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                 items: categories.map((category) {
                   return DropdownMenuItem(
                     value: category,
-                    child: Text(category),
+                    child: Text(category,style: GoogleFonts.montserrat(),),
                   );
                 }).toList(),
                 onChanged: (value) {
@@ -319,6 +322,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                 },
                 decoration: InputDecoration(
                   labelText: 'Categoría',
+                  labelStyle: GoogleFonts.montserrat(),
                 ),
               ),
               // Agrega más campos de filtro según tus necesidades
@@ -326,7 +330,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
           ),
           actions: [
             TextButton(
-              child: Text('Aplicar'),
+              child: Text('Aplicar',style: GoogleFonts.montserrat(),),
               onPressed: () {
                 setState(() {
                   applyFilter();
@@ -395,7 +399,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Listado de centros'),
+        title: Text('Listado de centros',style: GoogleFonts.montserrat(),),
         centerTitle: true,
       ),
       body: Column(
@@ -465,8 +469,8 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                     margin: EdgeInsets.all(8),
                     color: Colors.grey[300],
                     child: ListTile(
-                      title: Text(item.title),
-                      subtitle: Text(item.subtitle),
+                      title: Text(item.title,style: GoogleFonts.montserrat(),),
+                      subtitle: Text(item.subtitle,style: GoogleFonts.montserrat(),),
                       trailing: IconButton(
                         icon: Icon(
                           item.isFavorite ? Icons.favorite : Icons.favorite_border,
@@ -490,7 +494,7 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
                 icon: Icon(Icons.arrow_back),
                 onPressed: previousPage,
               ),
-              Text('Página $currentPage de $totalPages'),
+              Text('Página $currentPage de $totalPages',style: GoogleFonts.montserrat(),),
               IconButton(
                 icon: Icon(Icons.arrow_forward),
                 onPressed: nextPage,
