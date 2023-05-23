@@ -43,6 +43,30 @@ flutter:
   assets:
     - assets/images/perro_inicio.jpeg
     - assets/images/logo.png
+    - assets/images/gato.jpg
+    - assets/images/mastin.jpg
+    - assets/images/mestizo.jpg
+    - assets/images/pastor_aleman.jpg
+    - assets/images/pastor_belga.jpg
+    - assets/images/podenco.jpg
+    - assets/images/pointer.jpg
+    - assets/images/yorkshire.jpg
+    - assets/images/sharpei.jpg
+    - assets/images/galgo.jpg
+    - assets/images/bodeguero.jpg
+    - assets/images/bull_terrier.jpg
+    - assets/images/fox_terrier.jpg
+    - assets/images/breton.jpg
+    - assets/images/labrador.jpg
+    - assets/images/cruce_ppp.jpg
+    - assets/images/bichon_maltes.jpg
+    - assets/images/basenji.jpg
+    - assets/images/husky.jpg
+    - assets/images/pastor_caucaso.jpg
+    - assets/images/perro_agua.jpg
+
+
+
   fonts:
     - family: Montserrat
       fonts:

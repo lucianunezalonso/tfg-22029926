@@ -34,10 +34,6 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
 
   bool isMapLoading = false;
 
-  List<dynamic> filteredCentros = []; // Variable para almacenar los centros filtrados
-
-
-
   @override
   void initState() {
     super.initState();
@@ -77,17 +73,53 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
     } else {
       final int startIndex = (currentPage - 1) * itemsPerPage;
       final int endIndex = startIndex + itemsPerPage;
-      itemsToShow = allData.sublist(startIndex, endIndex > allData.length ? allData.length : endIndex).map((item) {
-        return ListItem(
-          title: item['Nombre'] ?? '',
-          subtitle: item['Direccion']?.toString() ?? '',
-          isFavorite: favoriteItems.any((favoriteItem) => favoriteItem.title == item['Nombre']),
-        );
-      }).toList();
-    }
 
+
+      if (isSearching) {
+        itemsToShow = filteredCentros.sublist(startIndex, endIndex > filteredCentros.length ? filteredCentros.length : endIndex).map((item) {
+          final capacidad = item['Capacidad'];
+          final ocupacion = item['Ocupacion'];
+
+          double porcentajeOcupacion = (ocupacion / capacidad) * 100;
+
+          return ListItem(
+
+            title: item['Nombre'] ?? '',
+            subtitle: '${porcentajeOcupacion.toStringAsFixed(2)}% de la capacidad máxima',
+            isFavorite: favoriteItems.any((favoriteItem) => favoriteItem.title == item['Nombre']),
+          );
+        }).toList();
+      } else if (isFiltered) {
+        itemsToShow = filteredData.sublist(startIndex, endIndex > filteredData.length ? filteredData.length : endIndex).map((item) {
+          final capacidad = item['Capacidad'];
+          final ocupacion = item['Ocupacion'];
+
+          double porcentajeOcupacion = (ocupacion / capacidad) * 100;
+
+          return ListItem(
+            title: item['Nombre'] ?? '',
+            subtitle: '${porcentajeOcupacion.toStringAsFixed(2)}% de la capacidad máxima',
+            isFavorite: favoriteItems.any((favoriteItem) => favoriteItem.title == item['Nombre']),
+          );
+        }).toList();
+      } else {
+        itemsToShow = allData.sublist(startIndex, endIndex > allData.length ? allData.length : endIndex).map((item) {
+          final capacidad = item['Capacidad'];
+          final ocupacion = item['Ocupacion'];
+
+          double porcentajeOcupacion = (ocupacion / capacidad) * 100;
+
+          return ListItem(
+            title: item['Nombre'] ?? '',
+            subtitle: '${porcentajeOcupacion.toStringAsFixed(2)}% de la capacidad máxima',
+            isFavorite: favoriteItems.any((favoriteItem) => favoriteItem.title == item['Nombre']),
+          );
+        }).toList();
+      }
+    }
     return itemsToShow;
   }
+
 
   void toggleFavorite(ListItem item) {
     setState(() {
@@ -109,8 +141,19 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
   }
 
   int getTotalPages() {
-    return showFavorites ? (favoriteItems.length / itemsPerPage).ceil() : (allData.length / itemsPerPage).ceil();
+    if (showFavorites) {
+      return (favoriteItems.length / itemsPerPage).ceil();
+    } else {
+      if (isSearching) {
+        return (filteredCentros.length / itemsPerPage).ceil();
+      } else if (isFiltered) {
+        return (filteredData.length / itemsPerPage).ceil();
+      } else {
+        return (allData.length / itemsPerPage).ceil();
+      }
+    }
   }
+
 
   void nextPage() {
     final int totalPages = getTotalPages();
@@ -157,7 +200,194 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
   }
 
 
+  // FUNCIÓN PARA BÚSQUEDA
+  String searchQuery = '';
 
+  void showSearchDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Buscar por nombre'),
+          content: TextField(
+            decoration: InputDecoration(
+              labelText: 'Buscar por nombre',
+            ),
+            onChanged: (value) {
+              setState(() {
+                searchQuery = value;
+              });
+            },
+          ),
+          actions: [
+            TextButton(
+              child: Text('Buscar'),
+              onPressed: () {
+                applySearchFilter();
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  List<dynamic> filteredCentros = []; // Variable para almacenar los centros filtrados
+
+  bool isSearching = false; // Variable para indicar si se está realizando una búsqueda
+
+  void applySearchFilter() {
+    setState(() {
+      filteredCentros = allData.where((centro) => centro['Nombre'].toString().toLowerCase().contains(searchQuery.toLowerCase())).toList();
+      isSearching = true; // Se ha aplicado el filtro de búsqueda
+    });
+  }
+
+  // FILTROS
+
+  String selectedAutonomousCommunity = 'Todas'; // Valor inicial: 'Todas'
+  String selectedCategory = 'Todas'; // Valor inicial: 'Todas'
+
+  void showFilterDialog() {
+    List<String> autonomousCommunities = []; // Lista para almacenar los valores únicos de CCAA
+    List<String> categories = []; // Lista para almacenar los valores únicos de categorías
+
+    // Obtener los valores únicos de CCAA y categorías
+    for (var centro in allData) {
+      String ccaa = centro['CCAA'];
+      String category = centro['Categoria'];
+
+      if (!autonomousCommunities.contains(ccaa)) {
+        autonomousCommunities.add(ccaa);
+      }
+
+      if (!categories.contains(category)) {
+        categories.add(category);
+      }
+    }
+
+    // Agregar la opción "Todas" al inicio de autonomousCommunities y categories
+    autonomousCommunities.insert(0, 'Todas');
+    categories.insert(0, 'Todas');
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Filtros'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // FILTRO DE COMUNIDAD AUTÓNOMA
+              DropdownButtonFormField<String>(
+                value: selectedAutonomousCommunity,
+                items: autonomousCommunities.map((ccaa) {
+                  return DropdownMenuItem(
+                    value: ccaa,
+                    child: Text(ccaa),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedAutonomousCommunity = value!;
+                  });
+                },
+                decoration: InputDecoration(
+                  labelText: 'Comunidad Autónoma',
+                ),
+              ),
+              // FILTRO DE CATEGORÍA
+              DropdownButtonFormField<String>(
+                value: selectedCategory,
+                items: categories.map((category) {
+                  return DropdownMenuItem(
+                    value: category,
+                    child: Text(category),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedCategory = value!;
+                  });
+                },
+                decoration: InputDecoration(
+                  labelText: 'Categoría',
+                ),
+              ),
+              // Agrega más campos de filtro según tus necesidades
+            ],
+          ),
+          actions: [
+            TextButton(
+              child: Text('Aplicar'),
+              onPressed: () {
+                setState(() {
+                  applyFilter();
+                });
+
+                Navigator.of(context).pop(); // Cierra el diálogo
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  List<dynamic> filteredData = []; // Variable para almacenar los centros filtrados
+  bool isFiltered = false;
+
+  void applyFilter() {
+    setState(() {
+      filteredData = allData.where((centro) {
+        bool byAutonomousCommunity = selectedAutonomousCommunity == 'Todas' ||
+            centro['CCAA'].toLowerCase() == selectedAutonomousCommunity!.toLowerCase();
+
+        bool byCategory = selectedCategory == 'Todas' ||
+            centro['Categoria'].toLowerCase() == selectedCategory!.toLowerCase();
+
+        // Mostrar todos los centros si se selecciona "Todas" en ambos filtros
+        if (selectedAutonomousCommunity == 'Todas' && selectedCategory == 'Todas') {
+          return true;
+        }
+
+        // Filtrar por la comunidad autónoma si se selecciona una categoría específica y todas las CCAA
+        if (selectedAutonomousCommunity == 'Todas' && selectedCategory != 'Todas') {
+          return byCategory;
+        }
+
+        // Filtrar por la categoría si se selecciona una CCAA específica y todas las categorías
+        if (selectedAutonomousCommunity != 'Todas' && selectedCategory == 'Todas') {
+          return byAutonomousCommunity;
+        }
+
+        // Filtrar por la comunidad autónoma y categoría seleccionadas
+        return byAutonomousCommunity && byCategory;
+      }).toList();
+
+      isFiltered = true;
+      // Reiniciar la paginación cuando se aplican los filtros
+      currentPage = 1;
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+  // CÓDIGO DEL WIDGET----------------------------------------------------------
 
   Widget build(BuildContext context) {
     final int totalPages = getTotalPages();
@@ -167,25 +397,59 @@ class _Opcion4ListadoState extends State<Opcion4Listado> {
         backgroundColor: Colors.black,
         title: Text('Listado de centros'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(showFavorites ? Icons.favorite : Icons.favorite_border),
-            onPressed: () {
-              setState(() {
-                showFavorites = !showFavorites;
-                currentPage = 1; // Reiniciar la página cuando se cambia el filtro
-              });
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.map),
-            onPressed: isMapLoading ? null : _navigateToMapScreen,
-          ),
-        ],
       ),
       body: Column(
         children: [
           SizedBox(height: 10),
+          Container(
+            color: Colors.grey[200], // Color de fondo de la barra
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    showSearchDialog();
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.filter_list),
+                  onPressed: () {
+                    showFilterDialog();
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    setState(() {
+                      showFavorites = false;
+                      isSearching = false;
+                      isFiltered= false;
+                      currentPage = 1;
+                      searchQuery = '';
+                    });
+                  },
+                ),
+
+                IconButton(
+                  icon: Icon(Icons.map),
+                  onPressed: isMapLoading ? null : _navigateToMapScreen,
+                ),
+
+                IconButton(
+                  icon: Icon(showFavorites ? Icons.favorite : Icons.favorite_border),
+                  onPressed: () {
+                    setState(() {
+                      showFavorites = !showFavorites;
+                      currentPage = 1; // Reiniciar la página cuando se cambia el filtro
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+
+
           Expanded(
             child: isLoading
                 ? Center(

@@ -26,32 +26,35 @@ class Opcion4Detalles extends StatelessWidget {
 
     double porcentajeOcupacion = (ocupacion / capacidad) * 100;
 
+
     final series = [
       charts.Series<BarChartData, String>(
-        id: 'Centro',
-        data: data,
-        domainFn: (BarChartData entry, _) => entry.category,
-        measureFn: (BarChartData entry, _) => entry.value,
-        colorFn: (BarChartData entry, _) {
-          if (entry.category == 'Capacidad') {
-            return charts.MaterialPalette.gray.shadeDefault;
-          } else {
-            if (entry.value <= centro['Capacidad'] - 20) {
-              return charts.MaterialPalette.green.shadeDefault;
-            } else if (entry.value <= centro['Capacidad']) {
-              return charts.MaterialPalette.yellow.shadeDefault;
+          id: 'Centro',
+          data: data,
+          domainFn: (BarChartData entry, _) => entry.category,
+          measureFn: (BarChartData entry, _) => entry.value,
+          // Color de las barras
+          colorFn: (BarChartData entry, _) {
+            if (entry.category == 'Capacidad') {
+              return charts.MaterialPalette.gray.shadeDefault;
             } else {
-              return charts.MaterialPalette.red.shadeDefault;
+              if (entry.value <= centro['Capacidad'] - 20) {
+                return charts.MaterialPalette.green.shadeDefault;
+              } else if (entry.value <= centro['Capacidad']) {
+                return charts.MaterialPalette.yellow.shadeDefault;
+              } else {
+                return charts.MaterialPalette.red.shadeDefault;
+              }
+            }
+          },
+          // Texto dentro de las barras
+          labelAccessorFn: (BarChartData entry, _) {
+            if (entry.category == 'Capacidad') {
+              return '    Capacidad máxima: ${centro['Capacidad']}';
+            } else {
+              return '    Ocupación: ${centro['Ocupacion']} (${porcentajeOcupacion.toStringAsFixed(2)}%)';
             }
           }
-        },
-        labelAccessorFn: (BarChartData entry, _) {
-          if (entry.category == 'Capacidad') {
-            return 'Capacidad máxima: ${centro['Capacidad']}';
-          } else {
-            return 'Ocupación: ${centro['Ocupacion']} (${porcentajeOcupacion.toStringAsFixed(2)}%)';
-          }
-        }
 
       ),
     ];
@@ -62,20 +65,11 @@ class Opcion4Detalles extends StatelessWidget {
       barGroupingType: charts.BarGroupingType.grouped, // Barras agrupadas
       vertical: false, // Barras horizontales
 
-      barRendererDecorator: charts.BarLabelDecorator(
-        labelAnchor: charts.BarLabelAnchor.start, // Barras un poco más largas
-        labelPosition: charts.BarLabelPosition.inside, // Colocar las etiquetas dentro de las barras
-        insideLabelStyleSpec: charts.TextStyleSpec(
-          fontWeight: 'bold', // Negrita
-        ),
-      ),
-
       domainAxis: charts.OrdinalAxisSpec(
         renderSpec: charts.NoneRenderSpec(), // Ocultar las etiquetas y líneas del eje X
       ),
-      primaryMeasureAxis: charts.NumericAxisSpec(
-        renderSpec: charts.NoneRenderSpec(), // Ocultar las etiquetas y líneas del eje Y
-      ),
+
+
     );
 
     final chartWidget = Container(
@@ -112,6 +106,7 @@ class Opcion4Detalles extends StatelessWidget {
               ),
               SizedBox(height: 20.0),
               chartWidget, // GRÁFICO
+              SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
