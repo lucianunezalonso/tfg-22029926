@@ -48,7 +48,7 @@ class _Inicio1ScreenState extends State<Inicio1Screen> {
               children: [
                 SizedBox(height: kToolbarHeight), // Añade un espacio del tamaño del AppBar
                 SizedBox(height: 22),
-                Image.asset('assets/images/logo.png'),
+                Image.asset('assets/images/logo_naranja.png'),
                 SizedBox(height: 370),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

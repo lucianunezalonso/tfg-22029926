@@ -48,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/logo.png', // Ruta de la imagen en el directorio de activos
+                  'assets/images/logo_naranja.png', // Ruta de la imagen en el directorio de activos
                 ),
                 SizedBox(height: 80),
 

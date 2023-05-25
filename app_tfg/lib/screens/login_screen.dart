@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       SizedBox(height: 50.0),
                       Image.asset(
-                        'assets/images/logo.png', // Ruta de la imagen en el directorio de activos
+                        'assets/images/logo_naranja.png', // Ruta de la imagen en el directorio de activos
                       ),
                       SizedBox(height: 90),
 

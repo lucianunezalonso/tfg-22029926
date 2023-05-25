@@ -61,7 +61,7 @@ class _MapaState extends State<Mapa> {
                   height: 40.0,
                   point: LatLng(centro['Latitud'], centro['Longitud']),
                   builder: (ctx) => Container(
-                    child: Icon(Icons.location_on, color: Colors.black.withOpacity(0.3)),
+                    child: Icon(Icons.location_on, color: Color(0xFFEE892F).withOpacity(0.3)),
                   ),
                 ),
               ).toList(),

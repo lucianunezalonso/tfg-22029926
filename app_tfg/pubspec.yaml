@@ -43,6 +43,7 @@ flutter:
   assets:
     - assets/images/perro_inicio.jpeg
     - assets/images/logo.png
+    - assets/images/logo_naranja.png
     - assets/images/gato.jpg
     - assets/images/mastin.jpg
     - assets/images/mestizo.jpg

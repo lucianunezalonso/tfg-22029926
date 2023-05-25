@@ -167,7 +167,7 @@ class _Opcion2_3TestState extends State<Opcion2_3Test> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFE0BB76), // Establecer el color de fondo del botón
+                  backgroundColor: Color(0xFFEE892F), // Establecer el color de fondo del botón
                 ),
                 child: Text(
                   'Siguiente',
